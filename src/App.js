@@ -48,7 +48,7 @@ function App() {
       {beta < 3 && beta > -1 && gamma < 3 && gamma > -1 && <h1>lying down</h1>}
       {beta < 95 && beta > 80 && <h1>upright</h1>}
       {gamma < 5 && gamma > -5 && (beta > 170 || beta < -170) && <h1>facing down</h1>}
-      {gamma < 90 && gamma > 80 && beta <= 1 && beta >= -1 && gamma < -80 && gamma > -90 && <h1>landscape</h1>}
+      {beta <= 1 && beta >= -1 && (gamma < -80 && gamma > -90 || gamma < 90 && gamma > 80) && <h1>landscape</h1>}
       
       <h1>{message}</h1>
     </div>
