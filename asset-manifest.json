@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/orientation-test-thing/static/css/main.31d6cfe0.css",
-    "main.js": "/orientation-test-thing/static/js/main.878dc8e3.js",
+    "main.js": "/orientation-test-thing/static/js/main.30ac366b.js",
     "index.html": "/orientation-test-thing/index.html",
-    "main.878dc8e3.js.map": "/orientation-test-thing/static/js/main.878dc8e3.js.map"
+    "main.30ac366b.js.map": "/orientation-test-thing/static/js/main.30ac366b.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.878dc8e3.js"
+    "static/js/main.30ac366b.js"
   ]
 }
