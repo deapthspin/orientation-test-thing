@@ -7,7 +7,7 @@ function App() {
   const [beta, setBeta] = useState(0)
   const [gamma, setGamma] = useState(0)
 
-  useEffect(() => {
+  const handleClick = () => {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
       // Handle iOS 13+ devices.
       DeviceMotionEvent.requestPermission()
@@ -23,7 +23,7 @@ function App() {
       // Handle regular non iOS 13+ devices.
       window.addEventListener('devicemotion', handleOrientation);
     }
-  }, [])
+  }
 
   function handleOrientation(event) {
     const a = event.alpha;
@@ -36,6 +36,7 @@ function App() {
   }
   return (
     <div className="App">
+      <button onClick={handleClick}>enable</button>
       <h1>alpha: {alpha}</h1>
       <h1>beta: {beta}</h1>
       <h1>gamma: {gamma}</h1>
