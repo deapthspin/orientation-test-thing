@@ -41,7 +41,7 @@ function App() {
   }
   return (
     <div className="App">
-      <button onClick={handleClick}>enable</button>
+      <button onClick={handleClick}>ensable</button>
       <h2>alpha: {Math.round(alpha)}</h2>
       <h2>beta: {Math.round(beta)}</h2>
       <h2>gamma: {Math.round(gamma)}</h2>
