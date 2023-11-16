@@ -28,9 +28,7 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    handleClick()
-  }, [])
+
 
   function handleOrientation(event) {
     const a = event.alpha;
@@ -43,7 +41,7 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <button onClick={handleClick}>enable</button> */}
+      <button onClick={handleClick}>enable</button>
       <h1>alpha: {alpha}</h1>
       <h1>beta: {beta}</h1>
       <h1>gamma: {gamma}</h1>
