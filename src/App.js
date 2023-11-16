@@ -1,8 +1,12 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [alpha, setAlpha] = useState(0)
+  const [beta, setBeta] = useState(0)
+  const [gamma, setGamma] = useState(0)
+
   useEffect(() => {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
       // Handle iOS 13+ devices.
@@ -22,15 +26,19 @@ function App() {
   }, [])
 
   function handleOrientation(event) {
-    const alpha = event.alpha;
-    const beta = event.beta;
-    const gamma = event.gamma;
+    const a = event.alpha;
+    const b = event.beta;
+    const g = event.gamma;
     
-    console.log(alpha, beta, gamma)
+    setAlpha(a)
+    setBeta(b)
+    setGamma(g)
   }
   return (
     <div className="App">
-
+      <h1>alpha: {alpha}</h1>
+      <h1>beta: {beta}</h1>
+      <h1>gamma: {gamma}</h1>
     </div>
   );
 }
