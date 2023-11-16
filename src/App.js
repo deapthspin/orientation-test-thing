@@ -14,7 +14,8 @@ function App() {
       DeviceMotionEvent.requestPermission()
         .then((state) => {
           if (state === 'granted') {
-            window.addEventListener('devicemotion', handleOrientation);
+            window.addEventListener('deviceorientation', handleOrientation);
+            console.log('k')
           } else {
             console.error('Request to access the orientation was rejected');
           }
@@ -22,11 +23,14 @@ function App() {
         .catch(console.error);
     } else {
       // Handle regular non iOS 13+ devices.
-      window.addEventListener('devicemotion', handleOrientation);
+      console.log('pas')
+      window.addEventListener('deviceorientation', handleOrientation);
     }
   }
 
-  window.addEventListener('deviceorientation', handleOrientation);
+  useEffect(() => {
+    handleClick()
+  }, [])
 
   function handleOrientation(event) {
     const a = event.alpha;
