@@ -42,9 +42,14 @@ function App() {
   return (
     <div className="App">
       <button onClick={handleClick}>enable</button>
-      <h1>alpha: {alpha}</h1>
-      <h1>beta: {beta}</h1>
-      <h1>gamma: {gamma}</h1>
+      <h2>alpha: {Math.round(alpha)}</h2>
+      <h2>beta: {Math.round(beta)}</h2>
+      <h2>gamma: {Math.round(gamma)}</h2>
+      {Math.round(beta) < 3 && Math.round(beta) > -1 && Math.round(gamma) < 3 && Math.round(gamma) > -1 && <h1>lying down</h1>}
+      {Math.round(beta) < 95 && Math.round(beta) > 80 && <h1>upright</h1>}
+      {Math.round(gamma) < 5 && Math.round(gamma) > -5 && <h1>facing down</h1>}
+      {Math.round(gamma) < 90 && Math.round(gamma) > 80 && Math.round(beta) < 1 && Math.round(beta) >= 0 && <h1>landscape</h1>}
+      
       <h1>{message}</h1>
     </div>
   );
