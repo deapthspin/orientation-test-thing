@@ -35,9 +35,9 @@ function App() {
     const b = event.beta;
     const g = event.gamma;
     console.log(event.alpha)
-    setAlpha(a)
-    setBeta(b)
-    setGamma(g)
+    setAlpha(Math.round(a))
+    setBeta(Math.round(b))
+    setGamma(Math.round(g))
   }
   return (
     <div className="App">
@@ -45,10 +45,10 @@ function App() {
       <h2>alpha: {Math.round(alpha)}</h2>
       <h2>beta: {Math.round(beta)}</h2>
       <h2>gamma: {Math.round(gamma)}</h2>
-      {Math.round(beta) < 3 && Math.round(beta) > -1 && Math.round(gamma) < 3 && Math.round(gamma) > -1 && <h1>lying down</h1>}
-      {Math.round(beta) < 95 && Math.round(beta) > 80 && <h1>upright</h1>}
-      {Math.round(gamma) < 5 && Math.round(gamma) > -5 && Math.round(beta) > 170 || Math.round(gamma) < -170 && <h1>facing down</h1>}
-      {Math.round(gamma) < 90 && Math.round(gamma) > 80 && Math.round(beta) < 1 && Math.round(beta) >= 0 && <h1>landscape</h1>}
+      {beta < 3 && beta > -1 && gamma < 3 && gamma > -1 && <h1>lying down</h1>}
+      {beta < 95 && beta > 80 && <h1>upright</h1>}
+      {gamma < 5 && gamma > -5 && (beta > 170 || beta < -170) && <h1>facing down</h1>}
+      {gamma < 90 && gamma > 80 && beta <= 1 && beta >= -1 && gamma < -80 && gamma > -90 && <h1>landscape</h1>}
       
       <h1>{message}</h1>
     </div>
