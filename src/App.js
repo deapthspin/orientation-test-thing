@@ -47,7 +47,7 @@ function App() {
       <h2>gamma: {Math.round(gamma)}</h2>
       {Math.round(beta) < 3 && Math.round(beta) > -1 && Math.round(gamma) < 3 && Math.round(gamma) > -1 && <h1>lying down</h1>}
       {Math.round(beta) < 95 && Math.round(beta) > 80 && <h1>upright</h1>}
-      {Math.round(gamma) < 5 && Math.round(gamma) > -5 && <h1>facing down</h1>}
+      {Math.round(gamma) < 5 && Math.round(gamma) > -5 && Math.round(beta) > 170 || Math.round(gamma) < -170 && <h1>facing down</h1>}
       {Math.round(gamma) < 90 && Math.round(gamma) > 80 && Math.round(beta) < 1 && Math.round(beta) >= 0 && <h1>landscape</h1>}
       
       <h1>{message}</h1>
