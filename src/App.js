@@ -31,7 +31,7 @@ function App() {
     let folder = require.context('./images', true)
     let imageList = folder.keys().map(image => folder(image));
     let random = Math.floor(Math.random() * imageList.length)
-    let chosen = imageList[0]
+    let chosen = imageList[random]
     // console.log(chosen)
     setChosenImage(chosen)
   }
@@ -59,7 +59,7 @@ function App() {
       {/* {} */}
       {/* {beta < 3 && beta >= -1 && gamma < 3 && gamma >= -1 && <h1>lying down</h1>}
       {beta < 95 && beta > 80 && <h1>upright</h1>} */}
-      {beta <= 1 && beta >= -1 && (gamma <= -80 && gamma >= -90 || gamma <= 90 && gamma >= 80) && <img className='randImg' src={chosenImage}/>}
+      {beta <= 5 && beta >= -5 && (gamma <= -60 && gamma >= -90 || gamma <= 90 && gamma >= 60) && <img className='randImg' src={chosenImage}/>}
       {gamma < 15 && gamma > -15 && (beta > 170 || beta < -170) && <div>
         
         <h1>picking animals</h1>
