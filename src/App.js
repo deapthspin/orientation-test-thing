@@ -52,14 +52,16 @@ function App() {
   }, [beta, gamma])
   return (
     <div className="App">
-      <button onClick={handleClick}>ensable</button>
-      <h2>alpha: {Math.round(alpha)}</h2>
+      <button onClick={handleClick}>enable</button>
+      <br/>
+      <br/>
+      {/* <h2>alpha: {Math.round(alpha)}</h2>
       <h2>beta: {Math.round(beta)}</h2>
-      <h2>gamma: {Math.round(gamma)}</h2>
+      <h2>gamma: {Math.round(gamma)}</h2> */}
       {/* {} */}
       {/* {beta < 3 && beta >= -1 && gamma < 3 && gamma >= -1 && <h1>lying down</h1>}
       {beta < 95 && beta > 80 && <h1>upright</h1>} */}
-      {((beta <= 20 && beta >= -20) || (beta >= 160 && beta <= -160)) && ((gamma <= -60 && gamma >= -90) || (gamma <= 90 && gamma >= 60)) && <img className='randImg' src={chosenImage}/>}
+      {((beta <= 20 && beta >= -20) || (beta >= 160 && beta <= -160)) && ((gamma <= -60 && gamma >= -90) || (gamma <= 90 && gamma >= 60)) && <img className='randImg' src={chosenImage} alt='tilt phone down to pick an image'/>}
       {gamma < 15 && gamma > -15 && (beta > 170 || beta < -170) && <div>
         
         <h1>picking animals</h1>
