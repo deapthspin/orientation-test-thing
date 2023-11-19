@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.5d296902.css","mappings":"AAAA,SAEI,YAAa,CACb,WAAW,CAFX,WAGJ","sources":["App.css"],"sourcesContent":[".randImg {\r\n    width: 300px;\r\n    height: 300px;\r\n    margin: auto\r\n}"],"names":[],"sourceRoot":""}
