@@ -45,7 +45,7 @@ function App() {
     setGamma(Math.round(g))
   }
   useEffect(() => {
-    if(gamma < 15 && gamma > -15 && (beta > 170 || beta < -170)) {
+    if(gamma <= 45 && gamma >= -45 && (beta > 170 || beta < -170)) {
       chooseimage()
     }
     
