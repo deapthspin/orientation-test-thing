@@ -55,9 +55,9 @@ function App() {
       <button onClick={handleClick}>enable</button>
       <br/>
       <br/>
-      {/* <h2>alpha: {Math.round(alpha)}</h2>
+      <h2>alpha: {Math.round(alpha)}</h2>
       <h2>beta: {Math.round(beta)}</h2>
-      <h2>gamma: {Math.round(gamma)}</h2> */}
+      <h2>gamma: {Math.round(gamma)}</h2>
       {/* {} */}
       {/* {beta < 3 && beta >= -1 && gamma < 3 && gamma >= -1 && <h1>lying down</h1>}
       {beta < 95 && beta > 80 && <h1>upright</h1>} */}
