@@ -62,7 +62,7 @@ function App() {
       {/* {beta < 3 && beta >= -1 && gamma < 3 && gamma >= -1 && <h1>lying down</h1>}
       {beta < 95 && beta > 80 && <h1>upright</h1>} */}
       {((beta <= 20 && beta >= -20) || (beta >= 160 && beta <= -160)) && ((gamma <= -60 && gamma >= -90) || (gamma <= 90 && gamma >= 60)) && <img className='randImg' src={chosenImage} alt='tilt phone down to pick an image'/>}
-      {gamma < 35 && gamma > -35 && (beta > 170 || beta < -170) && <div>
+      {gamma <= 45 && gamma >= -45 && (beta > 170 || beta < -170) && <div>
         
         <h1>picking animals</h1>
       </div>}
