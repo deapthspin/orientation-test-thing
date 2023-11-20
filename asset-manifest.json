@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/orientation-test-thing/static/css/main.1e583fe1.css",
-    "main.js": "/orientation-test-thing/static/js/main.69eb3359.js",
+    "main.js": "/orientation-test-thing/static/js/main.de5870c6.js",
     "static/media/lion.jpg": "/orientation-test-thing/static/media/lion.119a23d762b17b68f1e1.jpg",
     "static/media/horse.jpg": "/orientation-test-thing/static/media/horse.f143d013e7defa21c293.jpg",
     "static/media/elephant.jpeg": "/orientation-test-thing/static/media/elephant.050acf036c033cd9b6be.jpeg",
@@ -9,10 +9,10 @@
     "static/media/crocodile.jpeg": "/orientation-test-thing/static/media/crocodile.c6b56c933e80f86450ec.jpeg",
     "index.html": "/orientation-test-thing/index.html",
     "main.1e583fe1.css.map": "/orientation-test-thing/static/css/main.1e583fe1.css.map",
-    "main.69eb3359.js.map": "/orientation-test-thing/static/js/main.69eb3359.js.map"
+    "main.de5870c6.js.map": "/orientation-test-thing/static/js/main.de5870c6.js.map"
   },
   "entrypoints": [
     "static/css/main.1e583fe1.css",
-    "static/js/main.69eb3359.js"
+    "static/js/main.de5870c6.js"
   ]
 }
