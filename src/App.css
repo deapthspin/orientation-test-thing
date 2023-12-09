@@ -7,3 +7,7 @@
     height: 300px;
     /* margin: auto */
 }
+
+.score {
+    position: absolute;
+}
