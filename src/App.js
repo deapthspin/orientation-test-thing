@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<Homepage isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
         <Route path='/room/:roomid' element={<Room isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
+        <Route path='/qrjoin/:id' element={<Room isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
         <Route path='*' element={<Navigate to='/home'/>}/>
       </Routes>
     </div>

@@ -89,7 +89,7 @@ function Room(props) {
                     <h1>welcome to the room</h1>
                     {<h1>you are the owner of the room</h1>}
                     <h2>room-{roomId}</h2>
-                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://animalguessing.onrender.com:3000/room/${roomId}`}/>
+                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://animalguessing.onrender.com/qrjoin/${roomId}`}/>
                     <br/>
                     <br/>
                     {isOwner === 'yes' && <button onClick={closeRoom}>close room</button>}
