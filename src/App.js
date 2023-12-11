@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Homepage from './components/homepage'
 import Room from './components/room'
+import Joinroomfromqr from './components/joinroomfromqr'
 
 function App() {
   const [isOwner, setIsOwner] = useState(localStorage.getItem('isowner') ? localStorage.getItem('isowner') : "no")
@@ -14,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<Homepage isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
         <Route path='/room/:roomid' element={<Room isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
-        <Route path='/qrjoin/:id' element={<Room isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
+        <Route path='/qrjoin/:id' element={<Joinroomfromqr isOwner={isOwner} setIsOwner={setIsOwner}/>}/>
         <Route path='*' element={<Navigate to='/home'/>}/>
       </Routes>
     </div>
