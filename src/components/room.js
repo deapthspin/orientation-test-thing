@@ -12,7 +12,7 @@ function Room(props) {
     const [gameStarted, setGameStarted] = useState(false)
 
     async function getData() {
-        const res = await fetch(`http://localhost:6969/rooms/${roomId}`)
+        const res = await fetch(`http://animalguessingpg.onrender.com/rooms/${roomId}`)
         const data = await res.json()
 
         setPlayers(data.players)
@@ -21,7 +21,7 @@ function Room(props) {
 
     async function addPlayer(name) {
         console.log(players)
-        // await fetch(`http://localhost:6969/roomplayers/${roomId}`, {
+        // await fetch(`http://animalguessingpg.onrender.com/roomplayers/${roomId}`, {
         //     method: "PATCH",
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function Room(props) {
 
     function closeRoom(e) {
         e.preventDefault()
-        fetch(`http://localhost:6969/rooms/${roomId}`, {
+        fetch(`http://animalguessingpg.onrender.com/rooms/${roomId}`, {
             method: "DELETE"
         })
         localStorage.setItem('isowner', 'no')

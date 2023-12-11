@@ -18,7 +18,7 @@ function Homepage(props) {
         const roomid = uuid()
         if(createName.trim()) {
 
-            await fetch('http://localhost:6969/rooms', {
+            await fetch('http://animalguessingpg.onrender.com/rooms', {
                 method: "POST",
                 body: JSON.stringify({
                     roomId: roomid,
@@ -40,21 +40,21 @@ function Homepage(props) {
     async function joinRoom(e) {
         e.preventDefault()
 
-        const res1 = await fetch(`http://localhost:6969/playersinroom/${inputId}`)
+        const res1 = await fetch(`http://animalguessingpg.onrender.com/playersinroom/${inputId}`)
         const data1 = await res1.json()
 
         // console.log(data1.players)
         if(!data1.players.includes(inputName)) {
             if (inputId.trim() && inputName.trim()) {
                 console.log('sent')
-                const res = await fetch(`http://localhost:6969/rooms/${inputId}`)
+                const res = await fetch(`http://animalguessingpg.onrender.com/rooms/${inputId}`)
                 const data = await res.json()
     
                 let tempplayerArr = [...data.players]
                 
                tempplayerArr.push(inputName)
                 console.log(tempplayerArr.toString())
-                await fetch(`http://localhost:6969/roomplayers/${inputId}`, {
+                await fetch(`http://animalguessingpg.onrender.com/roomplayers/${inputId}`, {
                     method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json'
