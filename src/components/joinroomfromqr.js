@@ -18,7 +18,7 @@ function Joinroomfromqr() {
             const data1 = await res1.json()
     
             // console.log(data1.players)
-            if(!data1.players.includes(inputName)) {
+            if(!data1.players.includes(name)) {
             
                     console.log('sent')
                     const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${inputId}`)
@@ -26,7 +26,7 @@ function Joinroomfromqr() {
         
                     let tempplayerArr = [...data.players]
                     
-                   tempplayerArr.push(inputName)
+                   tempplayerArr.push(name)
                     console.log(tempplayerArr.toString())
                     await fetch(`https://animalguessingpg.onrender.com/roomplayers/${inputId}`, {
                         method: "PATCH",
@@ -40,13 +40,13 @@ function Joinroomfromqr() {
         
                     ws.current.send(
                         JSON.stringify({
-                            roomId: inputId,
-                            username: inputName,
+                            roomId: roomId,
+                            username: name,
                             msgType: 'joinroom'
                         })
                     )
                     
-                    navigate(`/room/${inputId}`)
+                    navigate(`/room/${roomId}`)
                 
             }
     
