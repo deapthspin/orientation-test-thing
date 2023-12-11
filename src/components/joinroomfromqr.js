@@ -56,7 +56,7 @@ function Joinroomfromqr() {
     return (
         <div>
             <input onChange={nameChange}/>
-            <button>join</button>
+            <button onClick={joinGame}>join</button>
         </div>
     )
 }
