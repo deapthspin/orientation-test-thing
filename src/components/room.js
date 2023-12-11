@@ -12,7 +12,7 @@ function Room(props) {
     const [gameStarted, setGameStarted] = useState(false)
 
     async function getData() {
-        const res = await fetch(`http://animalguessingpg.onrender.com/rooms/${roomId}`)
+        const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`)
         const data = await res.json()
 
         setPlayers(data.players)
@@ -21,7 +21,7 @@ function Room(props) {
 
     async function addPlayer(name) {
         console.log(players)
-        // await fetch(`http://animalguessingpg.onrender.com/roomplayers/${roomId}`, {
+        // await fetch(`https://animalguessingpg.onrender.com/roomplayers/${roomId}`, {
         //     method: "PATCH",
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function Room(props) {
 
     function closeRoom(e) {
         e.preventDefault()
-        fetch(`http://animalguessingpg.onrender.com/rooms/${roomId}`, {
+        fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`, {
             method: "DELETE"
         })
         localStorage.setItem('isowner', 'no')
@@ -89,7 +89,7 @@ function Room(props) {
                     <h1>welcome to the room</h1>
                     {<h1>you are the owner of the room</h1>}
                     <h2>room-{roomId}</h2>
-                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:3000/room/${roomId}`}/>
+                    <img src={`httpss://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://localhost:3000/room/${roomId}`}/>
                     <br/>
                     <br/>
                     {isOwner === 'yes' && <button onClick={closeRoom}>close room</button>}
