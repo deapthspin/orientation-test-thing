@@ -136,9 +136,9 @@ function Guessing(props) {
       setChosenImage(chosen)
       setOptions(qnoptions)
 
-      ws.current.send(JSON.stringify({
+      // ws.current.send(JSON.stringify({
         
-      }))
+      // }))
 
     }
   }
