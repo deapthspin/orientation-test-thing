@@ -33,7 +33,7 @@ function Room(props) {
     }
 
     useEffect(() => { // WS
-        ws.current = new WebSocket('ws://localhost:4200')
+        ws.current = new WebSocket('ws://animalguessingws.onrender.com')
         // console.log('k')
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
