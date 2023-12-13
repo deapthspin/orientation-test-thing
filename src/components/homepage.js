@@ -10,7 +10,7 @@ function Homepage(props) {
     const [inputName, setInputName] = useState('')
     const {isOwner, setIsOwner} = props
     useEffect(() => {
-        ws.current = new WebSocket('ws://localhost:4200')
+        ws.current = new WebSocket('wss://animalguessingws.onrender.com')
     }, [])
 
     async function createRoom(e) {
