@@ -221,6 +221,7 @@ function Guessing(props) {
       <h2 className='score'>score: {score}</h2>
       {!qnComplete && !finished && <h2 className=''>time left: {secondsLeft}</h2>}
       {<div>
+        <h1>{isowner}</h1>
         {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
         {isowner !== 'yes' && <div>
           {options.map((item) => (
