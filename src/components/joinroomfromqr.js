@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function Joinroomfromqr() {
+function Joinroomfromqr(props) {
     const roomId = useParams().id
     const [name, setName] = useState('')
     const navigate = useNavigate()
     const ws = useRef()
+    const {setIsOwner, isOwner} = props
     function nameChange(e) {
         
             setName(e.target.value)
