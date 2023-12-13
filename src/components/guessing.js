@@ -150,14 +150,14 @@ function Guessing(props) {
 
     if(isowner === 'yes') {
       chooseimage() 
-      setTimeout(() => {
+      
         ws.current.send(JSON.stringify({
           msgType: 'questiondata',
           roomId: roomId,
           options: options,
           img: chosenImage
         })) 
-      }, 100) 
+      
          
     } 
 
