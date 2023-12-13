@@ -144,7 +144,7 @@ function Guessing(props) {
   
 
   useEffect(() => {
-    ws.current = new WebSocket('ws://localhost:4200')
+    ws.current = new WebSocket('wss://animalguessingws.onrender.com')
 
     ws.current.onmessage = (event) => {
       const data = JSON.parse(event.data)
