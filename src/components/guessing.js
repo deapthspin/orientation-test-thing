@@ -15,7 +15,7 @@ function Guessing(props) {
   const [finished, setFinished] = useState(false)
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState(0)
-  const {playernum, roomId, isowner} = props
+  const {playernum, roomId, isowner, playerlist} = props
   const [secondsLeft, setSecondsLeft] = useState(0)
   
   const ws = useRef()
@@ -220,9 +220,9 @@ function Guessing(props) {
       </div>} */}
       <h2 className='score'>score: {score}</h2>
       {!qnComplete && !finished && <h2 className=''>time left: {secondsLeft}</h2>}
-      {!qnComplete && !finished && <div>
-        <img className='randImg' src={chosenImage} alt='img of stuff'/>
-        <div>
+      {<div>
+        {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
+        {isowner !== 'yes' && <div>
           {options.map((item) => (
             <div>
               <button onClick={(e) => {
@@ -244,16 +244,23 @@ function Guessing(props) {
               }}>{item.name} {item.correct.toString()}</button>
             </div>
           ))}
-        </div>
+        </div>}
       </div>}
-        {qnComplete && <div>
+        {qnComplete || isowner && <div>
             <h1>waiting for others to finish</h1>
             <h2>{numComplete}/{playernum}</h2>
         </div>}
-        {finished && <div>
+        {finished && isowner !== 'yes' && <div>
           <h1>completed</h1>
           <h1>score: {score}</h1>
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
+        </div>}
+        {finished && isowner === 'yes' && <div>
+          <ol>
+            {playerlist.map((plr) => {
+              <li>{plr}</li>
+            })}
+          </ol>
         </div>}
     </div>
   );
