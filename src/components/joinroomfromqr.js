@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function Joinroomfromqr() {
     const roomId = useParams().id
     const [name, setName] = useState('')
     const navigate = useNavigate()
+    const ws = useRef()
     function nameChange(e) {
         
             setName(e.target.value)
         
     }
+
+    useEffect(() => {
+        ws.current = new WebSocket('wss://animalguessingws.onrender.com')
+    }, [])
 
     async function joinGame(e) {
         e.preventDefault()
@@ -38,13 +43,13 @@ function Joinroomfromqr() {
                         })
                     })
         
-                    // ws.current.send(
-                    //     JSON.stringify({
-                    //         roomId: roomId,
-                    //         username: name,
-                    //         msgType: 'joinroom'
-                    //     })
-                    // )
+                    ws.current.send(
+                        JSON.stringify({
+                            roomId: roomId,
+                            username: name,
+                            msgType: 'joinroom'
+                        })
+                    )
                     
                     navigate(`/room/${roomId}`)
                 
