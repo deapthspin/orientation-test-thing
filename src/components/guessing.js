@@ -148,18 +148,7 @@ function Guessing(props) {
   useEffect(() => {
     ws.current = new WebSocket('wss://animalguessingws.onrender.com')
 
-    if(isowner === 'yes') {
-      chooseimage() 
-      
-        ws.current.send(JSON.stringify({
-          msgType: 'questiondata',
-          roomId: roomId,
-          options: options,
-          img: chosenImage
-        })) 
-      
-         
-    } 
+    
 
     ws.current.onmessage = (event) => {
       const data = JSON.parse(event.data)
@@ -199,6 +188,19 @@ function Guessing(props) {
         }
       }
     }
+
+    if(isowner === 'yes') {
+      chooseimage() 
+      
+        ws.current.send(JSON.stringify({
+          msgType: 'questiondata',
+          roomId: roomId,
+          options: options,
+          img: chosenImage
+        })) 
+      
+         
+    } 
   }, [])
 
   useEffect(() => {
