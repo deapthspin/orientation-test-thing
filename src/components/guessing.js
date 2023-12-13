@@ -136,7 +136,9 @@ function Guessing(props) {
       setChosenImage(chosen)
       setOptions(qnoptions)
 
-
+      ws.current.send(JSON.stringify({
+        
+      }))
 
     }
   }
@@ -176,6 +178,7 @@ function Guessing(props) {
           }
           // console.log(data.numComplete, numComplete)
         } else if(data.msgType === 'questiondata') {
+          console.log(data)
           if(isowner === 'no') {
             setChosenImage(data.img)
             setOptions(data.options)
