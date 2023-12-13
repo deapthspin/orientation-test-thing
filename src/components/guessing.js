@@ -189,18 +189,26 @@ function Guessing(props) {
       }
     }
 
-    if(isowner === 'yes') {
-      chooseimage() 
+    
       
-        ws.current.send(JSON.stringify({
-          msgType: 'questiondata',
-          roomId: roomId,
-          options: options,
-          img: chosenImage
-        })) 
+      ws.current.onopen = (e) => {
+        if(isowner === 'yes') {
+          chooseimage() 
+          
+          ws.current.send(JSON.stringify({
+            msgType: 'questiondata',
+            roomId: roomId,
+            options: options,
+            img: chosenImage
+          })) 
+          
+             
+        } 
+      }
+
       
          
-    } 
+    
   }, [])
 
   useEffect(() => {
