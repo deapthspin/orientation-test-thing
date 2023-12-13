@@ -50,7 +50,8 @@ function Joinroomfromqr() {
                             msgType: 'joinroom'
                         })
                     )
-                    
+                    localStorage.setItem('isowner', 'no')
+                    setIsOwner('no')
                     navigate(`/room/${roomId}`)
                 
             }
