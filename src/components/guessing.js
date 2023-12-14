@@ -56,7 +56,7 @@ function Guessing(props) {
 
   useEffect(() => {
     // console.log('qncomplete cjhanged', qnComplete)
-    if(!qnComplete) {
+    if(!qnComplete && isowner === 'yes') {
         // console.log('timer start')
         let secs = 20
         setSecondsLeft(20)
@@ -72,20 +72,14 @@ function Guessing(props) {
             // console.log('fail')
             
             setNumComplete(numComplete = playernum)
-            ws.current.send(JSON.stringify({
-              msgType: 'qndone',
-              roomId: roomId,
-              numComplete: numComplete,
-            }))
             
-            setQnComplete(true)
+            ws.current.send(JSON.stringify({
+              msgType: 'timeout',
+              roomId: roomId,
+            }))
             let temp = questionsCompleted + 1
             setQuestionsCompleted(temp)
             
-          // clearInterval(intervalid)
-          secs = 20
-          // chooseimage()
-          setQnComplete(false)
           
           // secs = 20
           // console.log(numComplete, 'aaa')
@@ -186,6 +180,20 @@ function Guessing(props) {
             setChosenImage(data.img)
             setOptions(data.options)
           }
+        } else if (data.msgType === 'timeout' && isowner === 'no') {
+          ws.current.send(JSON.stringify({
+            msgType: 'qndone',
+            roomId: roomId,
+            numComplete: numComplete,
+          }))
+          setQnComplete(true)
+          let temp = questionsCompleted + 1
+          setQuestionsCompleted(temp)
+          
+          // clearInterval(intervalid)
+        
+          // chooseimage()
+          setQnComplete(false)
         }
       }
     }
@@ -235,7 +243,7 @@ function Guessing(props) {
         <h1>picking animals</h1>
       </div>} */}
       <h2 className='score'>score: {score}</h2>
-      {!qnComplete && !finished && <h2 className=''>time left: {secondsLeft}</h2>}
+      {!qnComplete && !finished && isowner === 'yes' && <h2 className=''>time left: {secondsLeft}</h2>}
       {<div>
         <h1>{isowner}</h1>
         {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
