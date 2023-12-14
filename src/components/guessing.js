@@ -136,6 +136,12 @@ function Guessing(props) {
       setChosenImage(chosen)
       setOptions(qnoptions)
 
+      ws.current.send(JSON.stringify({
+        msgType: 'questiondata',
+        roomId: roomId,
+        options: qnoptions,
+        img: chosen
+      })) 
       // ws.current.send(JSON.stringify({
         
       // }))
@@ -166,12 +172,7 @@ function Guessing(props) {
             console.log(questionsCompleted)
             if(isowner === 'yes' && questionsCompleted < 10) {
               chooseimage() 
-              ws.current.send(JSON.stringify({
-                msgType: 'questiondata',
-                roomId: roomId,
-                options: options,
-                img: chosenImage
-              }))           
+                        
             } else if(questionsCompleted >= 10) {
               console.log('finished')
               setFinished(true)
@@ -195,12 +196,12 @@ function Guessing(props) {
         if(isowner === 'yes') {
           chooseimage() 
           
-          ws.current.send(JSON.stringify({
-            msgType: 'questiondata',
-            roomId: roomId,
-            options: options,
-            img: chosenImage
-          })) 
+          // ws.current.send(JSON.stringify({
+          //   msgType: 'questiondata',
+          //   roomId: roomId,
+          //   options: options,
+          //   img: chosenImage
+          // })) 
           
              
         } 
