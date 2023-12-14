@@ -81,7 +81,7 @@ function Guessing(props) {
             setQuestionsCompleted(temp)
             
           
-          // secs = 20
+          secs = 20
           // console.log(numComplete, 'aaa')
           }
           
