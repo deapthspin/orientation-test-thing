@@ -80,7 +80,11 @@ function Guessing(props) {
             let temp = questionsCompleted + 1
             setQuestionsCompleted(temp)
             
-          
+            ws.current.send(JSON.stringify({
+              msgType: 'qndone',
+              roomId: roomId,
+              numComplete: numComplete,
+            }))
           secs = 20
           // console.log(numComplete, 'aaa')
           }
