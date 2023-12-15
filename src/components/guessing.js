@@ -62,11 +62,14 @@ function Guessing(props) {
         setSecondsLeft(secondsLeft = 20)
         setIntervalid(0)
         let temp = setInterval(() => {
-          console.log(playerlist)
+          // console.log(playerlist)
           setSecondsLeft(secondsLeft = 20)
           setIntervalid(intervalid = temp)
           // console.log(typeof(temp), temp, intervalid)
+          console.log(secondsLeft, '1')
+
           if(secondsLeft > 0) {
+            console.log(secondsLeft, '2')
             setSecondsLeft(secondsLeft -= 1)
           } else {
             // console.log('fail')
