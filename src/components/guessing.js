@@ -16,7 +16,7 @@ function Guessing(props) {
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState(0)
   const {playernum, roomId, isowner, playerlist} = props
-  const [secondsLeft, setSecondsLeft] = useState(0)
+  let [secondsLeft, setSecondsLeft] = useState(0)
   
   const ws = useRef()
 
@@ -59,15 +59,15 @@ function Guessing(props) {
     if(!qnComplete && isowner === 'yes') {
         // console.log('timer start')
         
-        setSecondsLeft(20)
+        setSecondsLeft(secondsLeft = 20)
         setIntervalid(0)
         let temp = setInterval(() => {
-          // console.log(secs)
-          setSecondsLeft(20)
+          console.log(playerlist)
+          setSecondsLeft(secondsLeft = 20)
           setIntervalid(intervalid = temp)
           // console.log(typeof(temp), temp, intervalid)
           if(secondsLeft > 0) {
-            setSecondsLeft(secondsLeft - 1)
+            setSecondsLeft(secondsLeft -= 1)
           } else {
             // console.log('fail')
             
@@ -85,7 +85,7 @@ function Guessing(props) {
               roomId: roomId,
               numComplete: numComplete,
             }))
-          setSecondsLeft(20)
+          setSecondsLeft(secondsLeft = 20)
           // console.log(numComplete, 'aaa')
           }
           
