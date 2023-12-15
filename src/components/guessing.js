@@ -63,7 +63,7 @@ function Guessing(props) {
         setIntervalid(0)
         let temp = setInterval(() => {
           // console.log(playerlist)
-          setSecondsLeft(secondsLeft = 20)
+          // setSecondsLeft(secondsLeft = 20)
           setIntervalid(intervalid = temp)
           // console.log(typeof(temp), temp, intervalid)
           console.log(secondsLeft, '1')
