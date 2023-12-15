@@ -163,6 +163,7 @@ function Guessing(props) {
           // console.log('add')
           // console.log('thats 1')
           if(data.numComplete === playernum) {
+            console.log(data.numComplete, playernum, 'yayaya')
             setQnComplete(false)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
