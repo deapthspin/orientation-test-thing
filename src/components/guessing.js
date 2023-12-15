@@ -58,16 +58,16 @@ function Guessing(props) {
     // console.log('qncomplete cjhanged', qnComplete)
     if(!qnComplete && isowner === 'yes') {
         // console.log('timer start')
-        let secs = 20
+        
         setSecondsLeft(20)
         setIntervalid(0)
         let temp = setInterval(() => {
           // console.log(secs)
-          setSecondsLeft(secs)
+          setSecondsLeft(20)
           setIntervalid(intervalid = temp)
           // console.log(typeof(temp), temp, intervalid)
-          if(secs > 0) {
-            secs -= 1
+          if(secondsLeft > 0) {
+            setSecondsLeft(secondsLeft - 1)
           } else {
             // console.log('fail')
             
@@ -85,7 +85,7 @@ function Guessing(props) {
               roomId: roomId,
               numComplete: numComplete,
             }))
-          secs = 20
+          setSecondsLeft(20)
           // console.log(numComplete, 'aaa')
           }
           
