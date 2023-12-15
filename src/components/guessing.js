@@ -181,8 +181,10 @@ function Guessing(props) {
               chooseimage() 
                         
             } else if(questionsCompleted >= 10) {
-              console.log('finished')
+              clearInterval(intervalid)
               setFinished(true)
+              console.log('finished', finished)
+
             }
 
           }
@@ -203,7 +205,7 @@ function Guessing(props) {
           let temp = questionsCompleted + 1
           setQuestionsCompleted(temp)
           
-          // clearInterval(intervalid)
+          
         
           // chooseimage()
           setQnComplete(false)
@@ -257,8 +259,8 @@ function Guessing(props) {
       </div>} */}
       <h2 className='score'>score: {score}</h2>
       {!qnComplete && !finished && isowner === 'yes' && <h2 className=''>time left: {secondsLeft}</h2>}
-      {<div>
-        <h1>{isowner}</h1>
+      {!finished && <div>
+        {/* <h1>{isowner}</h1> */}
         {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
         {isowner !== 'yes' && <div>
           {options.map((item) => (
