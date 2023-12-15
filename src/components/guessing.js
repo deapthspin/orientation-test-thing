@@ -204,7 +204,7 @@ function Guessing(props) {
           setQnComplete(true)
           let temp = questionsCompleted + 1
           setQuestionsCompleted(temp)
-          
+          setNumComplete(numComplete = 0)
           
         
           // chooseimage()
