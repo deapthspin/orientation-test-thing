@@ -196,11 +196,14 @@ function Guessing(props) {
             setOptions(data.options)
           }
         } else if (data.msgType === 'timeout' && isowner === 'no') {
-          ws.current.send(JSON.stringify({
-            msgType: 'qndone',
-            roomId: roomId,
-            numComplete: numComplete,
-          }))
+          if(!qnComplete) {
+            ws.current.send(JSON.stringify({
+              msgType: 'qndone',
+              roomId: roomId,
+              numComplete: numComplete,
+            }))
+          }
+          
           setQnComplete(true)
           let temp = questionsCompleted + 1
           setQuestionsCompleted(temp)
