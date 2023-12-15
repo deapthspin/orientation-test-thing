@@ -165,6 +165,7 @@ function Guessing(props) {
           if(data.numComplete === playernum) {
             console.log(data.numComplete, playernum, 'yayaya')
             setQnComplete(false)
+            setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
