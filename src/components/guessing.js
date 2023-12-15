@@ -72,7 +72,9 @@ function Guessing(props) {
             console.log(secondsLeft, '2')
             let temp = secondsLeft
             temp -= 1
-            setSecondsLeft(temp)
+            console.log(temp, '3')
+            setSecondsLeft(secondsLeft = temp)
+            console.log(secondsLeft, '4')
           } else {
             // console.log('fail')
             
