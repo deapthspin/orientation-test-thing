@@ -224,7 +224,7 @@ function Guessing(props) {
         } else if(data.msgType === 'scores') {
           let temp = [...plrScores]
           temp.push({name: data.name, score: data.score})
-          setPlrScores(temp)
+          setPlrScores([...plrScores, {name: data.name, score: data.score}])
           console.log(plrScores, data)
         }
       }
@@ -316,7 +316,7 @@ function Guessing(props) {
           <ol>
             {plrScores.map((plr) => {
               <li>
-                {plr.name}: {plr.score}/10
+                {plr.name}: {plr.score}
 
               </li>
             })}
