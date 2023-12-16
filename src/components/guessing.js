@@ -314,8 +314,11 @@ function Guessing(props) {
         </div>}
         {finished && isowner === 'yes' && <div>
           <ol>
-            {playerlist.map((plr) => {
-              <li>{plr}</li>
+            {plrScores.map((plr) => {
+              <li>
+                {plr.name}: {plr.score}/10
+
+              </li>
             })}
           </ol>
         </div>}
