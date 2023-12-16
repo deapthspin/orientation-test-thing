@@ -220,7 +220,7 @@ function Guessing(props) {
           setQnComplete(false)
         } else if(data.msgType === 'scores') {
           setPlrScores([...plrScores, {name: data.username, score: data.score}])
-          console.log(plrScores)
+          console.log(plrScores, data)
         }
       }
     }
