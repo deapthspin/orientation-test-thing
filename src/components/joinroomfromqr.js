@@ -6,7 +6,7 @@ function Joinroomfromqr(props) {
     const [name, setName] = useState('')
     const navigate = useNavigate()
     const ws = useRef()
-    const {setIsOwner, isOwner} = props
+    const {setIsOwner, isOwner, setUsername} = props
     function nameChange(e) {
         
             setName(e.target.value)
@@ -20,6 +20,7 @@ function Joinroomfromqr(props) {
     async function joinGame(e) {
         e.preventDefault()
         if(name.trim()) {
+            setUsername(name.trim())
             const res1 = await fetch(`https://animalguessingpg.onrender.com/playersinroom/${roomId}`)
             const data1 = await res1.json()
     

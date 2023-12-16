@@ -8,7 +8,7 @@ function Homepage(props) {
     const [createName, setCreateName] = useState('')
     const [inputId, setInputId] = useState('')
     const [inputName, setInputName] = useState('')
-    const {isOwner, setIsOwner} = props
+    const {isOwner, setIsOwner, setUsername} = props
     useEffect(() => {
         ws.current = new WebSocket('wss://animalguessingws.onrender.com')
         ws.onopen = (e) => {
@@ -50,6 +50,8 @@ function Homepage(props) {
         // console.log(data1.players)
         if(!data1.players.includes(inputName)) {
             if (inputId.trim() && inputName.trim()) {
+                setUsername(inputName.trim())
+
                 console.log('sent')
                 const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${inputId}`)
                 const data = await res.json()

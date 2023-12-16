@@ -8,7 +8,7 @@ function Room(props) {
     const [players, setPlayers] = useState([])
     const ws = useRef()
     const navigate = useNavigate()
-    const {isOwner, setIsOwner} = props
+    const {isOwner, setIsOwner, setUsername, username} = props
     const [gameStarted, setGameStarted] = useState(false)
 
     async function getData() {
@@ -110,7 +110,7 @@ function Room(props) {
                 {!players.length && <h1>this room does not exist</h1>}
             </div>}
            {gameStarted && <div>
-                <Guessing playernum={players.length - 1} playerlist={players.slice(0)} roomId={roomId} isowner={isOwner}/>
+                <Guessing username={username} playernum={players.length - 1} playerlist={players.slice(0)} roomId={roomId} isowner={isOwner} playername={pl}/>
             </div>}
         </div>
     )

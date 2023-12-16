@@ -15,9 +15,9 @@ function Guessing(props) {
   const [finished, setFinished] = useState(false)
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState(0)
-  const {playernum, roomId, isowner, playerlist} = props
+  const {playernum, roomId, isowner, playerlist, username} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
-  
+  let [plrScores, setPlrScores] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -184,7 +184,12 @@ function Guessing(props) {
               clearInterval(intervalid)
               setFinished(true)
               console.log('finished', finished)
-
+              ws.current.send(JSON.stringify({
+                roomId: roomId,
+                msgType: 'scores',
+                score: score,
+                name: username
+              }))
             }
 
           }
@@ -213,6 +218,8 @@ function Guessing(props) {
         
           // chooseimage()
           setQnComplete(false)
+        } else if(data.msgType === 'scores') {
+          setPlrScores([...plrScores, {name: data.username, score: data.score}])
         }
       }
     }
@@ -294,7 +301,7 @@ function Guessing(props) {
             <h1>waiting for others to finish</h1>
             <h2>{numComplete}/{playernum}</h2>
         </div>}
-        {finished && isowner !== 'yes' && <div>
+        {finished && isowner === 'no' && <div>
           <h1>completed</h1>
           <h1>score: {score}</h1>
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
