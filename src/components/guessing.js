@@ -222,8 +222,8 @@ function Guessing(props) {
           // chooseimage()
           setQnComplete(false)
         } else if(data.msgType === 'scores') {
-          let temp = [...plrScores]
-          temp.push({name: data.name, score: data.score})
+          // let temp = [...plrScores]
+          // temp.push({name: data.name, score: data.score})
           setPlrScores([...plrScores, {name: data.name, score: data.score}])
           console.log(plrScores, data)
         }
