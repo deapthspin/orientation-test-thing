@@ -317,6 +317,7 @@ function Guessing(props) {
           <ol>
             {plrScores.map((plr) => {
               <li>
+                <h1>dsbnfjksnd</h1>
                 {plr.name}: {plr.score}
 
               </li>
