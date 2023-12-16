@@ -189,7 +189,7 @@ function Guessing(props) {
                 ws.current.send(JSON.stringify({
                   roomId: roomId,
                   msgType: 'scores',
-                  score: score * 1,
+                  score: 69,
                   name: username
                 }))
               }
