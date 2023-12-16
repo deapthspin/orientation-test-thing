@@ -195,7 +195,7 @@ function Guessing(props) {
               }
               
             }
-
+  
           }
           // console.log(data.numComplete, numComplete)
         } else if(data.msgType === 'questiondata') {
@@ -314,7 +314,7 @@ function Guessing(props) {
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
         </div>}
         {console.log(plrScores.length, finished, isowner)}
-        {finished && isowner === 'yes' && plrScores.length > 0 && <div>
+        {/* {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           <ol>
             {plrScores.map((plr) => (
               <li>
@@ -324,7 +324,7 @@ function Guessing(props) {
               </li>
             ))}
           </ol>
-        </div>}
+        </div>} */}
     </div>
   );
 }
