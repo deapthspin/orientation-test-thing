@@ -17,7 +17,7 @@ function Guessing(props) {
   let [intervalid, setIntervalid] = useState(0)
   const {playernum, roomId, isowner, playerlist, username} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
-  const [plrScores, setPlrScores] = useState([])
+  let [plrScores, setPlrScores] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -224,7 +224,7 @@ function Guessing(props) {
         } else if(data.msgType === 'scores') {
           // let temp = [...plrScores]
           // temp.push({name: data.name, score: data.score})
-          setPlrScores([...plrScores, {name: data.name, score: data.score}])
+          setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
           console.log(plrScores, data)
         }
       }
