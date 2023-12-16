@@ -184,12 +184,15 @@ function Guessing(props) {
               clearInterval(intervalid)
               setFinished(true)
               console.log('finished', finished)
-              ws.current.send(JSON.stringify({
-                roomId: roomId,
-                msgType: 'scores',
-                score: score,
-                name: username
-              }))
+              if(isowner === 'no') {
+                ws.current.send(JSON.stringify({
+                  roomId: roomId,
+                  msgType: 'scores',
+                  score: score,
+                  name: username
+                }))
+              }
+              
             }
 
           }
@@ -219,7 +222,9 @@ function Guessing(props) {
           // chooseimage()
           setQnComplete(false)
         } else if(data.msgType === 'scores') {
-          setPlrScores([...plrScores, {name: data.username, score: data.score}])
+          let temp = [...plrScores]
+          temp.push({name: data.name, score: data.score})
+          setPlrScores(temp)
           console.log(plrScores, data)
         }
       }
