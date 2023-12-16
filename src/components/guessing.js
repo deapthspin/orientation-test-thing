@@ -9,7 +9,7 @@ function Guessing(props) {
   const [chosenImage, setChosenImage] = useState('')
   // const [correctAns, setCorrectAns] = useState('')
   const [options, setOptions] = useState([])
-  const [score, setScore] = useState(0)
+  let [score, setScore] = useState(0)
   const [qnComplete, setQnComplete] = useState(false)
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
@@ -286,7 +286,7 @@ function Guessing(props) {
               <button onClick={(e) => {
                 clearInterval(intervalid)
                 if(item.correct) {
-                  setScore(score + 1)
+                  setScore(score += 1)
                   
                 }
                 // setNumComplete(numComplete + 1)
