@@ -17,7 +17,7 @@ function Guessing(props) {
   let [intervalid, setIntervalid] = useState(0)
   const {playernum, roomId, isowner, playerlist, username} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
-  let [plrScores, setPlrScores] = useState([])
+  const [plrScores, setPlrScores] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
