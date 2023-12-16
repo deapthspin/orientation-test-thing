@@ -315,13 +315,13 @@ function Guessing(props) {
         {console.log(plrScores.length, finished, isowner)}
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           <ol>
-            {plrScores.map((plr) => {
+            {plrScores.map((plr) => (
               <li>
                 <h1>dsbnfjksnd</h1>
                 {plr.name}: {plr.score}
 
               </li>
-            })}
+            ))}
           </ol>
         </div>}
     </div>
