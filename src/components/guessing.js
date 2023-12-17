@@ -107,7 +107,9 @@ function Guessing(props) {
 
   useEffect(() => {
     for(let i  = 0; i < playerlist.length; i++) {
-      setPlrScores(old => [...old, {name: playerlist[i], score: 0}])
+      let temp = [...plrScores]
+      temp.push({name: playerlist[i], score: 0})
+      setPlrScores(temp)
     }
 
     console.log(plrScores, playerlist)
