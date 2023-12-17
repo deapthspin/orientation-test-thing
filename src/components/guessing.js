@@ -304,7 +304,7 @@ function Guessing(props) {
           ))}
         </div>}
       </div>}
-        {qnComplete || isowner && <div>
+        {qnComplete || isowner === 'yes' && <div>
             <h1>waiting for others to finish</h1>
             <h2>{numComplete}/{playernum}</h2>
         </div>}
