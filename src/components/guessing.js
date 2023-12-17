@@ -14,10 +14,10 @@ function Guessing(props) {
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
   let [numComplete, setNumComplete] = useState(0)
-  let [intervalid, setIntervalid] = useState(0)
+  let [intervalid, setIntervalid] = useState (0)
   const {playernum, roomId, isowner, playerlist, username} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
-  let [plrScores, setPlrScores] = useState([])
+  const [plrScores, setPlrScores] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -105,6 +105,13 @@ function Guessing(props) {
   }, [qnComplete])
 
 
+  useEffect(() => {
+    for(let i  = 0; i < playerlist.length; i++) {
+      setPlrScores([...plrScores, {name: playerlist[i], score: 0}])
+    }
+
+    console.log(plrScores)
+  }, [])
 
   function chooseimage() {
     // setNumComplete(0)
@@ -223,10 +230,10 @@ function Guessing(props) {
           // chooseimage()
           setQnComplete(false)
         } else if(data.msgType === 'scores') {
-          // let temp = [...plrScores]
-          // temp.push({name: data.name, score: data.score})
-          setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
-          console.log(plrScores, data)
+          // // let temp = [...plrScores]
+          // // temp.push({name: data.name, score: data.score})
+          // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
+          // console.log(plrScores, data)
         }
       }
     }
