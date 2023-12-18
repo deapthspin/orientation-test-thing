@@ -113,7 +113,7 @@ function Guessing(props) {
 
     }
     setPlrScores(temp)
-    console.log(plrScores, playerlist)
+    console.log(plrScores, temp, playerlist)
   }, [])
 
   function chooseimage() {
