@@ -17,7 +17,7 @@ function Guessing(props) {
   let [intervalid, setIntervalid] = useState (0)
   const {playernum, roomId, isowner, playerlist, username} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
-  const [plrScores, setPlrScores] = useState([])
+  let [plrScores, setPlrScores] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -112,7 +112,7 @@ function Guessing(props) {
       temp.push({name: playerlist[i], score: 0})
 
     }
-    setPlrScores(temp)
+    setPlrScores(plrScores = temp)
     console.log(plrScores, temp, playerlist)
   }, [])
 
@@ -237,6 +237,13 @@ function Guessing(props) {
           // // temp.push({name: data.name, score: data.score})
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
           // console.log(plrScores, data)
+        } else if(data.msgType === 'qncorrect') {
+          for(let i = 0; i < plrScores.length; i++) {
+            if(plrScores[i].name === data.msgType.username) {
+              // plrScores[i].score += 1
+            }
+            
+          }
         }
       }
     }
@@ -297,7 +304,11 @@ function Guessing(props) {
                 clearInterval(intervalid)
                 if(item.correct) {
                   setScore(score += 1)
-                  
+                  ws.current.send(JSON.stringify({
+                    msgType: 'qncorrect',
+                    roomId: roomId,
+                    username: username
+                  }))
                 }
                 // setNumComplete(numComplete + 1)
                 setQnComplete(true)
