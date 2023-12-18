@@ -240,7 +240,7 @@ function Guessing(props) {
         } else if(data.msgType === 'qncorrect') {
           for(let i = 0; i < plrScores.length; i++) {
             if(plrScores[i].name === data.msgType.username) {
-              // plrScores[i].score += 1
+              plrScores[i].score += 1
             }
             
           }
@@ -334,18 +334,18 @@ function Guessing(props) {
           <h1>score: {score}</h1>
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
         </div>}
-        {console.log(plrScores.length, finished, isowner)}
-        {/* {finished && isowner === 'yes' && plrScores.length > 0 && <div>
+        {console.log(plrScores)}
+        {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           <ol>
             {plrScores.map((plr) => (
               <li>
-                <h1>dsbnfjksnd</h1>
+                {/* <h1>dsbnfjksnd</h1> */}
                 {plr.name}: {plr.score}
 
               </li>
             ))}
           </ol>
-        </div>} */}
+        </div>}
     </div>
   );
 }
