@@ -240,8 +240,8 @@ function Guessing(props) {
         } else if(data.msgType === 'qncorrect') {
           console.log('recieved')
           for(let i = 0; i < plrScores.length; i++) {
-            console.log(plrScores[i].name, data.msgType.username)
-            if(plrScores[i].name === data.msgType.username) {
+            console.log(plrScores[i].name, data.username)
+            if(plrScores[i].name === data.username) {
               plrScores[i].score += 1
             }
             
