@@ -238,6 +238,7 @@ function Guessing(props) {
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
           // console.log(plrScores, data)
         } else if(data.msgType === 'qncorrect') {
+          console.log('recieved')
           for(let i = 0; i < plrScores.length; i++) {
             console.log(plrScores[i].name, data.msgType.username)
             if(plrScores[i].name === data.msgType.username) {
