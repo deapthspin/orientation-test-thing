@@ -66,15 +66,15 @@ function Guessing(props) {
           // setSecondsLeft(secondsLeft = 20)
           setIntervalid(intervalid = temp)
           // console.log(typeof(temp), temp, intervalid)
-          console.log(secondsLeft, '1')
+          
 
           if(secondsLeft > 0) {
-            console.log(secondsLeft, '2')
+            
             let temp = secondsLeft
             temp -= 1
-            console.log(temp, '3')
+            
             setSecondsLeft(secondsLeft = temp)
-            console.log(secondsLeft, '4')
+            
           } else {
             // console.log('fail')
             
@@ -180,13 +180,13 @@ function Guessing(props) {
           // console.log('add')
           // console.log('thats 1')
           if(data.numComplete === playernum) {
-            console.log(data.numComplete, playernum, 'yayaya')
+            
             setQnComplete(false)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
-            console.log(questionsCompleted)
+            
             if(isowner === 'yes' && questionsCompleted < 10) {
               chooseimage() 
                         
@@ -239,6 +239,7 @@ function Guessing(props) {
           // console.log(plrScores, data)
         } else if(data.msgType === 'qncorrect') {
           for(let i = 0; i < plrScores.length; i++) {
+            console.log(plrScores[i].name, data.msgType.username)
             if(plrScores[i].name === data.msgType.username) {
               plrScores[i].score += 1
             }
