@@ -176,7 +176,10 @@ function Guessing(props) {
 
       if(data.roomId === roomId) {
         if(data.msgType === 'qndone') {
-          setNumComplete(numComplete = (data.numComplete * 1))
+          if(cangetscore) {
+            setNumComplete(numComplete = (data.numComplete * 1))
+
+          }
           // console.log('add')
           // console.log('thats 1')
           if(data.numComplete === playernum) {
@@ -243,15 +246,16 @@ function Guessing(props) {
             setQnComplete(true)
             setScore(score += 1)
             cangetscore = false
+            for(let i = 0; i < plrScores.length; i++) {
+              console.log(plrScores[i].name, data.username)
+              if(plrScores[i].name === data.username) {
+                plrScores[i].score += 1
+              }
+              
+            }
           }
           console.log('recieved')
-          for(let i = 0; i < plrScores.length; i++) {
-            console.log(plrScores[i].name, data.username)
-            if(plrScores[i].name === data.username) {
-              plrScores[i].score += 1
-            }
-            
-          }
+          
         }
       }
     }
@@ -310,6 +314,11 @@ function Guessing(props) {
             <div>
               <button onClick={(e) => {
                 clearInterval(intervalid)
+                ws.current.send(JSON.stringify({
+                  msgType: 'qndone',
+                  roomId: roomId,
+                  numComplete: numComplete + 1,
+                }))
                 if(item.correct) {
                   
                   setQnComplete(true)
@@ -323,11 +332,7 @@ function Guessing(props) {
                 setQnComplete(true)
                 // setQuestionsCompleted(questionsCompleted + 1)
                 // console.log(numComplete)
-                ws.current.send(JSON.stringify({
-                  msgType: 'qndone',
-                  roomId: roomId,
-                  numComplete: numComplete + 1,
-                }))
+                
                 
               }}>{item.name} {item.correct.toString()}</button>
             </div>
