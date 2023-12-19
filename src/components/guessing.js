@@ -246,13 +246,14 @@ function Guessing(props) {
             // setQnComplete(true)
             setScore(score += 1)
             // cangetscore = false
-            for(let i = 0; i < plrScores.length; i++) {
-              console.log(plrScores[i].name, data.username)
-              if(plrScores[i].name === data.username) {
-                plrScores[i].score += 1
-              }
-              
+            
+          }
+          for(let i = 0; i < plrScores.length; i++) {
+            console.log(plrScores[i].name, data.username)
+            if(plrScores[i].name === data.username) {
+              plrScores[i].score += 1
             }
+            
           }
           console.log('recieved')
           
