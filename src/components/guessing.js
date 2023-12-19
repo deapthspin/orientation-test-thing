@@ -220,11 +220,11 @@ function Guessing(props) {
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
           
-            // ws.current.send(JSON.stringify({
-            //   msgType: 'qndone',
-            //   roomId: roomId,
-            //   numComplete: numComplete,
-            // }))
+            ws.current.send(JSON.stringify({
+              msgType: 'qndone',
+              roomId: roomId,
+              numComplete: numComplete,
+            }))
           
           
           setQnComplete(true)
@@ -243,7 +243,7 @@ function Guessing(props) {
         } else if(data.msgType === 'qncorrect') {
           
           if(data.username === username) {
-            setQnComplete(true)
+            // setQnComplete(true)
             setScore(score += 1)
             // cangetscore = false
             for(let i = 0; i < plrScores.length; i++) {
