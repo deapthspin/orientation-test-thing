@@ -314,22 +314,26 @@ function Guessing(props) {
             <div>
               <button onClick={(e) => {
                 clearInterval(intervalid)
-                ws.current.send(JSON.stringify({
-                  msgType: 'qndone',
-                  roomId: roomId,
-                  numComplete: numComplete + 1,
-                }))
-                if(item.correct) {
-                  
-                  setQnComplete(true)
+                if(!qnComplete) {
                   ws.current.send(JSON.stringify({
-                    msgType: 'qncorrect',
+                    msgType: 'qndone',
                     roomId: roomId,
-                    username: username
+                    numComplete: numComplete + 1,
                   }))
+                  if(item.correct) {
+                    
+                    
+                    ws.current.send(JSON.stringify({
+                      msgType: 'qncorrect',
+                      roomId: roomId,
+                      username: username
+                    }))
+                  }
+                  setQnComplete(true)
                 }
+                
                 // setNumComplete(numComplete + 1)
-                setQnComplete(true)
+                
                 // setQuestionsCompleted(questionsCompleted + 1)
                 // console.log(numComplete)
                 
