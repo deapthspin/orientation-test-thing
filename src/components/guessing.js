@@ -170,7 +170,7 @@ function Guessing(props) {
     ws.current = new WebSocket('wss://animalguessingws.onrender.com')
 
     
-
+    let cangetscore = true
     ws.current.onmessage = (event) => {
       const data = JSON.parse(event.data)
 
@@ -186,7 +186,7 @@ function Guessing(props) {
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
-            
+            cangetscore = true
             if(isowner === 'yes' && questionsCompleted < 10) {
               chooseimage() 
                         
@@ -238,10 +238,11 @@ function Guessing(props) {
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
           // console.log(plrScores, data)
         } else if(data.msgType === 'qncorrect') {
-
-          if(data.username === username) {
+          
+          if(data.username === username && cangetscore) {
             setQnComplete(true)
             setScore(score += 1)
+            cangetscore = false
           }
           console.log('recieved')
           for(let i = 0; i < plrScores.length; i++) {
