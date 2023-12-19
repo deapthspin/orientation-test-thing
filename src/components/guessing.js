@@ -182,7 +182,7 @@ function Guessing(props) {
           
           // console.log('add')
           // console.log('thats 1')
-          if(numComplete === playernum) {
+          if(numComplete >= playernum) {
             
             setQnComplete(false)
             setSecondsLeft(secondsLeft = 20)
@@ -220,11 +220,11 @@ function Guessing(props) {
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
           
-            ws.current.send(JSON.stringify({
-              msgType: 'qndone',
-              roomId: roomId,
-              numComplete: numComplete,
-            }))
+            // ws.current.send(JSON.stringify({
+            //   msgType: 'qndone',
+            //   roomId: roomId,
+            //   numComplete: numComplete,
+            // }))
           
           
           setQnComplete(true)
@@ -242,7 +242,7 @@ function Guessing(props) {
           // console.log(plrScores, data)
         } else if(data.msgType === 'qncorrect') {
           
-          if(data.username === username && cangetscore) {
+          if(data.username === username) {
             setQnComplete(true)
             setScore(score += 1)
             // cangetscore = false
@@ -309,12 +309,13 @@ function Guessing(props) {
       {!finished && <div>
         {/* <h1>{isowner}</h1> */}
         {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
-        {isowner !== 'yes' && <div>
+        {isowner !== 'yes' && !qnComplete && <div>
           {options.map((item) => (
             <div>
               <button onClick={(e) => {
                 clearInterval(intervalid)
                 if(!qnComplete) {
+                  setQnComplete(true)
                   ws.current.send(JSON.stringify({
                     msgType: 'qndone',
                     roomId: roomId,
