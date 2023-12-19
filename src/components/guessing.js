@@ -238,7 +238,9 @@ function Guessing(props) {
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
           // console.log(plrScores, data)
         } else if(data.msgType === 'qncorrect') {
+
           if(data.username === username) {
+            setQnComplete(true)
             setScore(score += 1)
           }
           console.log('recieved')
