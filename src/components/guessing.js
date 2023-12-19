@@ -176,20 +176,20 @@ function Guessing(props) {
 
       if(data.roomId === roomId) {
         if(data.msgType === 'qndone') {
-          if(cangetscore) {
-            setNumComplete(numComplete = (data.numComplete * 1))
+          
+            setNumComplete(numComplete += 1)
 
-          }
+          
           // console.log('add')
           // console.log('thats 1')
-          if(data.numComplete === playernum) {
+          if(numComplete === playernum) {
             
             setQnComplete(false)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
-            cangetscore = true
+            // cangetscore = true
             if(isowner === 'yes' && questionsCompleted < 10) {
               chooseimage() 
                         
@@ -318,7 +318,7 @@ function Guessing(props) {
                   ws.current.send(JSON.stringify({
                     msgType: 'qndone',
                     roomId: roomId,
-                    numComplete: numComplete + 1,
+                    numComplete: numComplete,
                   }))
                   if(item.correct) {
                     
