@@ -184,7 +184,6 @@ function Guessing(props) {
           // console.log('thats 1')
           if(numComplete >= playernum) {
             
-            setQnComplete(false)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
@@ -208,7 +207,8 @@ function Guessing(props) {
               }
               
             }
-  
+            setQnComplete(false)
+            
           }
           // console.log(data.numComplete, numComplete)
         } else if(data.msgType === 'questiondata') {
