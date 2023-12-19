@@ -306,6 +306,7 @@ function Guessing(props) {
                 clearInterval(intervalid)
                 if(item.correct) {
                   setScore(score += 1)
+                  setQnComplete(true)
                   ws.current.send(JSON.stringify({
                     msgType: 'qncorrect',
                     roomId: roomId,
