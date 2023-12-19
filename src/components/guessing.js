@@ -245,7 +245,7 @@ function Guessing(props) {
           if(data.username === username && cangetscore) {
             setQnComplete(true)
             setScore(score += 1)
-            cangetscore = false
+            // cangetscore = false
             for(let i = 0; i < plrScores.length; i++) {
               console.log(plrScores[i].name, data.username)
               if(plrScores[i].name === data.username) {
