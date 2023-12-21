@@ -253,7 +253,7 @@ function Guessing(props) {
 
   function addText(e) {
     let temp = [...ans]
-    temp.push(e.target.innerHTML)
+    temp.push(`${e.target.innerText} `)
     setAns(temp)
   }
 
@@ -291,7 +291,7 @@ function Guessing(props) {
         {isowner === 'yes' && <div>
           <h1>{question}</h1>
         </div>}
-        {isowner !== 'yes' && !qnComplete && <h1>{ans}</h1>}
+        {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
         {isowner !== 'yes' && !qnComplete && <div>
             {cards.map((card) => (
               <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
