@@ -15,9 +15,11 @@ function Guessing(props) {
   const [finished, setFinished] = useState(false)
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
-  const {playernum, roomId, isowner, playerlist, username} = props
+  const {playernum, roomId, isowner, playerlist, username, cards, setCards} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
+
+  const [question, setQuestion] = useState('')
   const ws = useRef()
 
   // const handleClick = () => {
@@ -118,50 +120,16 @@ function Guessing(props) {
 
   function chooseimage() {
     // setNumComplete(0)
-    setOptions([])
-    let folder = require.context('./images', true)
-    let imageList = folder.keys().map(image => folder(image));
+      
+    const questions = [
+      'question 1',
+      'question 2',
+      'question 3',
+      'question 4',
+    ]
+    let random = Math.floor(Math.random() * questions.length)
+    setQuestion(questions[random])
     
-    let animalNames = ['cat','chicken','cow','crocodile','dog','duck','elephant','giraffe','horse','lion','pig','shark','sheep','snake','tiger']
-    let animalNames2 = ['cat','chicken','cow','crocodile','dog','duck','elephant','giraffe','horse','lion','pig','shark','sheep','snake','tiger']
-    
-    let qnoptions = [...options]
-    while (qnoptions.length < 3) {
-      let randomn = Math.floor(Math.random() * animalNames2.length)
-      let totalclear = 0
-      for(let i = 0; i < qnoptions.length; i++) {
-        if(qnoptions[i].name !== animalNames2[randomn]) {
-          totalclear += 1
-        }
-      }
-      if(totalclear >= qnoptions.length) {
-        qnoptions.push({name: animalNames2[randomn], correct: false, index: randomn})
-        // console.log(qnoptions, animalNames2[randomn])  
-      }
-
-
-    }
-
-    if(qnoptions.length >= 3) {
-      let randomcorrect = Math.floor(Math.random() * qnoptions.length)
-      qnoptions[randomcorrect].correct = true
-      let chosen = imageList[qnoptions[randomcorrect].index]
-      // console.log(qnoptions)
-
-      setChosenImage(chosen)
-      setOptions(qnoptions)
-
-      ws.current.send(JSON.stringify({
-        msgType: 'questiondata',
-        roomId: roomId,
-        options: qnoptions,
-        img: chosen
-      })) 
-      // ws.current.send(JSON.stringify({
-        
-      // }))
-
-    }
   }
 
   
@@ -309,8 +277,11 @@ function Guessing(props) {
       {!qnComplete && !finished && isowner === 'yes' && <h2 className=''>time left: {secondsLeft}</h2>}
       {!finished && <div>
         {/* <h1>{isowner}</h1> */}
-        {isowner === 'yes' && <img className='randImg' src={chosenImage} alt='img of stuff'/>}
-        {isowner !== 'yes' && !qnComplete && <div>
+        {isowner === 'yes' && <div>
+          <h1>{question}</h1>
+        </div>}
+        
+        {/* {isowner !== 'yes' && !qnComplete && <div>
           {options.map((item) => (
             <div>
               <button onClick={(e) => {
@@ -343,7 +314,7 @@ function Guessing(props) {
               }}>{item.name} {item.correct.toString()}</button>
             </div>
           ))}
-        </div>}
+        </div>} */}
       </div>}
         {qnComplete || isowner === 'yes' && <div>
             <h1>waiting for others to finish</h1>

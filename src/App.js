@@ -11,7 +11,7 @@ function App() {
     console.log(isOwner)
   }, [])
   return (
-    <div>
+    <div className='App'>
       {/* <h1>routes be here</h1> */}
       <Routes>
         <Route path='/home' element={<Homepage isOwner={isOwner} setIsOwner={setIsOwner} setUsername={setUsername}/>}/>

@@ -10,7 +10,7 @@ function Room(props) {
     const navigate = useNavigate()
     const {isOwner, setIsOwner, setUsername, username} = props
     const [gameStarted, setGameStarted] = useState(false)
-
+    const [cards, setCards] = useState([])
     async function getData() {
         const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`)
         const data = await res.json()
@@ -85,15 +85,42 @@ function Room(props) {
 
     }
 
+    function getCards() {
+        const wcardsArray = [{text: 'white 1', colour: 'white'},{text: 'white 2', colour: 'white'},{text: 'white 3', colour: 'white'},{text: 'white 4', colour: 'white'},{text: 'white 5', colour: 'white'},{text: 'white 6', colour: 'white'},]
+        const bcardsArray = [{text: 'black 1', colour: 'black'},{text: 'black 2', colour: 'black'},{text: 'black 3', colour: 'black'},{text: 'black 4', colour: 'black'},{text: 'black 5', colour: 'black'},{text: 'black 6', colour: 'black'},]
+
+        const chosen = []
+
+        while(chosen.length < 3) {
+            let temp = wcardsArray[Math.floor(Math.random() * (wcardsArray.length))]
+            if(!chosen.includes(temp)) {
+                chosen.push(temp)
+            }
+        }
+        while(chosen.length < 6) {
+            let temp = bcardsArray[Math.floor(Math.random() * (wcardsArray.length))]
+            if(!chosen.includes(temp)) {
+                chosen.push(temp)
+            }
+        }
+
+        console.log(chosen)
+        setCards(chosen)
+    }
+
+    useEffect(() => {
+        getCards()
+    }, [])
+
     return (
-        <div>
+        <div className='app'>
             {!gameStarted && <div>
                 {players.length && <div>
-                    <h1>welcome to the room</h1>
+                    {/* <h1>welcome to the room</h1> */}
                     {isOwner === 'yes' && <h1>you are the owner of the room</h1>}
                     <h2>room-{roomId}</h2>
                     <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jacobsiew.dev/qrjoin/${roomId}`}/>
-                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://animalguessing.onrender.com/qrjoin/${roomId}`}/>
+                    {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://animalguessing.onrender.com/qrjoin/${roomId}`}/> */}
                     <br/>
                     <br/>
                     {isOwner === 'yes' && <button onClick={closeRoom}>close room</button>}
@@ -106,11 +133,18 @@ function Room(props) {
                         ))}
                     </div>
                 </div>}
-                
+                <div className='cards'>
+                    {cards.map((card) => (
+                        <div className={`card-${card.colour}`}>
+                            <h1>{card.text}</h1>
+                            {/* <h1>{card.colour}</h1> */}
+                        </div>
+                    ))}
+                </div>
                 {!players.length && <h1>this room does not exist</h1>}
             </div>}
            {gameStarted && <div>
-                <Guessing username={username} playernum={players.length - 1} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
+                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length - 1} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
             </div>}
         </div>
     )

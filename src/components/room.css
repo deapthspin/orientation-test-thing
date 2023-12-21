@@ -19,3 +19,32 @@
     flex-wrap: wrap;
     margin: 50px auto;
 }
+.app {
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    margin: 0 auto;
+    width: 1200px;
+}
+.card-white {
+    width: 200px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5%;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.card-black {
+    width: 200px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 5%;
+    margin-left: 5px;
+    font-size: 10px;
+
+}

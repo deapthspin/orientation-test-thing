@@ -1,6 +1,7 @@
 .App {
-    text-align: center;
+    /* text-align: center; */
     /* border: 1px solid black; */
+    font-family: Arial;
 }
 .randImg {
     width: 300px;

@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid'
 function Homepage(props) {
     const navigate = useNavigate()
     const ws = useRef()
-    const [createName, setCreateName] = useState('')
+    // const [createName, setCreateName] = useState('')
     const [inputId, setInputId] = useState('')
     const [inputName, setInputName] = useState('')
     const {isOwner, setIsOwner, setUsername} = props
@@ -20,14 +20,14 @@ function Homepage(props) {
         e.preventDefault()
         // console.log('aa')
         const roomid = uuid()
-        if(createName.trim()) {
+        if(inputName.trim()) {
 
             await fetch('https://animalguessingpg.onrender.com/rooms', {
                 method: "POST",
                 body: JSON.stringify({
                     roomId: roomid,
-                    players: [`${createName}`],
-                    roomOwner: createName
+                    players: [`${inputName}`],
+                    roomOwner: inputName
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -90,17 +90,15 @@ function Homepage(props) {
         <div className='main'>
             <h1>homepage</h1>
             <form>
-                <input placeholder='your name' onChange={(e) => setCreateName(e.target.value)}/>
-                <br/>
+                <input placeholder='your username' onChange={(e) => setInputName(e.target.value)}/>                <br/>
                 <br/>
                 <button className='create-room' onClick={createRoom}>create room</button>
             </form>
-            
+            <h1>or</h1>
             <h2>join a room</h2>
-            <input placeholder='your username' onChange={(e) => setInputName(e.target.value)}/>
-            <br/>
             <input placeholder='room code' onChange={(e) => setInputId(e.target.value)}/>
-            <button onClick={joinRoom}>join</button>
+            <br/>
+            <button className='joinbutton' onClick={joinRoom}>join</button>
         </div>
     )
 }
