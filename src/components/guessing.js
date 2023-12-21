@@ -18,7 +18,7 @@ function Guessing(props) {
   const {playernum, roomId, isowner, playerlist, username, cards, setCards} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
-
+  const [ans, setAns] = useState([])
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
@@ -251,6 +251,17 @@ function Guessing(props) {
     
   }, [])
 
+  function addText(e) {
+    let temp = [...ans]
+    temp.push(e.target.innerHTML)
+    setAns(temp)
+  }
+
+  function sendAns() {
+
+  }
+
+
   useEffect(() => {
 
 
@@ -280,7 +291,16 @@ function Guessing(props) {
         {isowner === 'yes' && <div>
           <h1>{question}</h1>
         </div>}
-        
+        {isowner !== 'yes' && !qnComplete && <h1>{ans}</h1>}
+        {isowner !== 'yes' && !qnComplete && <div>
+            {cards.map((card) => (
+              <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
+                  <h1>{card.text}</h1>
+                  {/* <h1>{card.colour}</h1> */}
+              </div>
+            ))}
+        </div>}
+        <button onClick={sendAns}>send answer</button>
         {/* {isowner !== 'yes' && !qnComplete && <div>
           {options.map((item) => (
             <div>
