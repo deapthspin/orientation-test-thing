@@ -225,6 +225,8 @@ function Guessing(props) {
           }
           console.log('recieved')
           
+        } else if(data.msgType === 'sendans') {
+          console.log(data)
         }
       }
     }
@@ -258,7 +260,14 @@ function Guessing(props) {
   }
 
   function sendAns() {
-
+    if(ans.length >= 2) {
+      ws.current.send(JSON.stringify({
+        msgType: 'sendans',
+        ans: ans,
+        roomId: roomId,
+        username: username
+      }))
+    }
   }
 
 
