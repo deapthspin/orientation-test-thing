@@ -270,7 +270,7 @@ function Guessing(props) {
       setCards(temp)
       ws.current.send(JSON.stringify({
         msgType: 'sendans',
-        ans: temp,
+        ans: [temp, ans],
         roomId: roomId,
         username: username
       }))
