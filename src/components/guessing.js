@@ -228,7 +228,7 @@ function Guessing(props) {
           console.log('recieved')
           
         } else if(data.msgType === 'sendans') {
-          console.log(data.ans)
+          console.log(data.ans, 'sdfjsdfjhkbjkhsfdjkhjksdfjkhjhksfd')
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
         }
       }
