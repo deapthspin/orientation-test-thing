@@ -269,7 +269,9 @@ function Guessing(props) {
         roomId: roomId,
         username: username
       }))
-      setCards(cards.filter((card) => !ans.includes(card.text)))
+      let temp = [...cards]
+      temp.filter((card) => !ans.includes(card.text))
+      setCards(temp)
     }
   }
 
