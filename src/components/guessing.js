@@ -263,15 +263,18 @@ function Guessing(props) {
 
   function sendAns() {
     if(ans.length >= 2) {
+      let temp = [...cards]
+      temp.filter((card) => !ans.includes(card.text))
+      console.log(temp)
+      setCards(temp)
       ws.current.send(JSON.stringify({
         msgType: 'sendans',
-        ans: ans,
+        ans: temp,
         roomId: roomId,
         username: username
       }))
-      let temp = [...cards]
-      temp.filter((card) => !ans.includes(card.text))
-      setCards(temp)
+      
+      
     }
   }
 
