@@ -265,17 +265,14 @@ function Guessing(props) {
   function sendAns() {
     if(ans.length >= 2) {
       let temp = [...cards]
-      let temp3 = []
       let temp2 = [...ans].join('').split('\n\n')
-      for(let i = 0; i < temp.length; i++) {
-        if(temp2.includes(temp[i].text) === false) {
-          temp3.push(temp[i])
-        }
+      for(let i = 0; i < temp2.length; i++) {
+        temp.splice(temp.findIndex((item) => item.text === temp2[i]), 1)
       }
       setCards(temp)
       ws.current.send(JSON.stringify({
         msgType: 'sendans',
-        ans: [temp3, temp2, ans],
+        ans: [temp, temp2, ans],
         roomId: roomId,
         username: username
       }))
