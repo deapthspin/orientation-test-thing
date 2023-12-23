@@ -265,7 +265,7 @@ function Guessing(props) {
   function sendAns() {
     if(ans.length >= 2) {
       let temp = [...cards]
-      let temp2 = [...ans].join('').split('\n\n').toString().split(' ')
+      let temp2 = [...ans].map((item) => item.trim())
       for(let i = 0; i < temp2.length; i++) {
         console.log('1')
         console.log('2', ans, temp2[i], temp2, i, temp[temp.findIndex((item) => item.text === temp2[i])])
