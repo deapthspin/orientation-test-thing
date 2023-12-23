@@ -268,7 +268,7 @@ function Guessing(props) {
       let temp2 = [...ans].join('').split('\n\n')
       for(let i = 0; i < temp2.length; i++) {
         console.log('1')
-        console.log('2', temp2[i], temp[temp.findIndex((item) => item.text === temp2[i])])
+        console.log('2', temp2[i], temp2, i, temp[temp.findIndex((item) => item.text === temp2[i])])
         if(temp.findIndex((item) => item.text === temp2[i]) !== -1) {
           console.log('3', temp2[i], temp[temp.findIndex((item) => item.text === temp2[i])])
           temp.splice(temp.findIndex((item) => item.text === temp2[i]), 1)
