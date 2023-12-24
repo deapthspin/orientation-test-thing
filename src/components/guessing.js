@@ -13,6 +13,8 @@ function Guessing(props) {
   const [qnComplete, setQnComplete] = useState(false)
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
+  const [isVoting, setIsVoting] = useState(false)
+
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
   const {playernum, roomId, isowner, playerlist, username, cards, setCards} = props
@@ -160,7 +162,8 @@ function Guessing(props) {
             setQuestionsCompleted(questionsCompleted = temp)
             // cangetscore = true
             if(isowner === 'yes' && questionsCompleted < 10) {
-              chooseimage() 
+              // chooseimage() 
+              setIsVoting(true)
                         
             } else if(questionsCompleted >= 10) {
               clearInterval(intervalid)
@@ -312,6 +315,9 @@ function Guessing(props) {
 
   }, [])
   
+  function vote(e) {
+    console.log('placeholder')
+  }
 
   return (
     <div className="App">
@@ -336,13 +342,16 @@ function Guessing(props) {
         {isowner === 'yes' && <div>
           <h1>{question}</h1>
         </div>}
-        {isowner === 'yes' && <div>
+        {isowner === 'yes' || isVoting && <div>
           {playerans.map((plr) => (
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
+              {isVoting && isowner !== 'yes' && <button onClick={vote}>vote</button>}
             </div>
           ))}
         </div>}
+        {isVoting && <h1>voting time</h1>}
+
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
         {isowner !== 'yes' && !qnComplete && <div>
             {cards.map((card) => (
@@ -353,6 +362,8 @@ function Guessing(props) {
             ))}
         </div>}
         {isowner === 'no' && <button onClick={sendAns}>send answer</button>}
+        
+        
         {/* {isowner !== 'yes' && !qnComplete && <div>
           {options.map((item) => (
             <div>
