@@ -155,7 +155,7 @@ function Guessing(props) {
           // console.log('add')
           // console.log('thats 1')
           if(numComplete >= playernum) {
-            
+            clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
@@ -283,7 +283,6 @@ function Guessing(props) {
         username: username
       }))
       setAns([])
-      clearInterval(intervalid)
       if(!qnComplete) {
         setQnComplete(true)
         ws.current.send(JSON.stringify({
@@ -342,7 +341,7 @@ function Guessing(props) {
         {isowner === 'yes' && <div>
           <h1>{question}</h1>
         </div>}
-        {isowner === 'yes' || isVoting && <div>
+        {isVoting && <div>
           {playerans.map((plr) => (
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
