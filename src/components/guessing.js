@@ -22,7 +22,7 @@ function Guessing(props) {
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState([])
   const [playerans, setPlayerans] = useState([])
-
+  const [votedPlayer, setVotedPlayer] = useState({})
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
@@ -165,9 +165,6 @@ function Guessing(props) {
                
               if(!isVoting) {
                 setIsVoting(true)
-              } else {
-                setIsVoting(false)
-                chooseimage()
               }
               
                         
@@ -198,7 +195,13 @@ function Guessing(props) {
           }
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
-          
+          if(isVoting) {
+            ws.current.send(JSON.stringify({
+              roomId: roomId,
+              msgType: 'vote',
+              voted: votedPlayer
+            })) 
+          }
             ws.current.send(JSON.stringify({
               msgType: 'qndone',
               roomId: roomId,
@@ -228,17 +231,19 @@ function Guessing(props) {
             
           }
           for(let i = 0; i < plrScores.length; i++) {
-            console.log(plrScores[i].name, data.username)
+            // console.log(plrScores[i].name, data.username)
             if(plrScores[i].name === data.username) {
               plrScores[i].score += 1
             }
             
           }
-          console.log('recieved')
+          // console.log('recieved')
           
         } else if(data.msgType === 'sendans') {
-          console.log(data.ans, 'sdfjsdfjhkbjkhsfdjkhjksdfjkhjhksfd')
+          // console.log(data.ans, 'sdfjsdfjhkbjkhsfdjkhjksdfjkhjhksfd')
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
+        } else if(data.msgType === 'vote') {
+          console.log(data.voted)
         }
       }
     }
@@ -299,11 +304,11 @@ function Guessing(props) {
         // if(item.correct) {
           
           
-          ws.current.send(JSON.stringify({
-            msgType: 'qncorrect',
-            roomId: roomId,
-            username: username
-          }))
+          // ws.current.send(JSON.stringify({
+          //   msgType: 'qncorrect',
+          //   roomId: roomId,
+          //   username: username
+          // }))
         // }
         // setQnComplete(true)
       }
@@ -321,7 +326,8 @@ function Guessing(props) {
   }, [])
   
   function vote(e) {
-    console.log('placeholder')
+    setQnComplete(true)
+    setVotedPlayer(playerans[e.target.id])
   }
 
   return (
@@ -349,10 +355,11 @@ function Guessing(props) {
         </div>}
         {isVoting && <div>
           <h1>abcd</h1>
-          {playerans.map((plr) => (
+          {playerans.map((plr, index) => (
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
-              {isVoting && isowner !== 'yes' && <button onClick={vote}>vote</button>}
+              {isVoting && isowner !== 'yes' && plr.name === votedPlayer.name && <h2>voted</h2>}
+              {isVoting && isowner !== 'yes' && <button onClick={vote} id={index}>vote</button>}
             </div>
           ))}
         </div>}
