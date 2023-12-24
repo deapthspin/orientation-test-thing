@@ -267,10 +267,7 @@ function Guessing(props) {
       let temp = [...cards]
       let temp2 = [...ans].map((item) => item.trim())
       for(let i = 0; i < temp2.length; i++) {
-        console.log('1')
-        console.log('2', ans, temp2[i], temp2, i, temp[temp.findIndex((item) => item.text === temp2[i])])
         if(temp.findIndex((item) => item.text === temp2[i]) !== -1) {
-          console.log('3', temp2[i], temp[temp.findIndex((item) => item.text === temp2[i])])
           temp.splice(temp.findIndex((item) => item.text === temp2[i]), 1)
         }
         
@@ -278,12 +275,34 @@ function Guessing(props) {
       setCards(temp)
       ws.current.send(JSON.stringify({
         msgType: 'sendans',
-        ans: [temp, temp2, ans],
+        ans: ans,
         roomId: roomId,
         username: username
       }))
+      setAns([])
+      clearInterval(intervalid)
+      if(!qnComplete) {
+        setQnComplete(true)
+        ws.current.send(JSON.stringify({
+          msgType: 'qndone',
+          roomId: roomId,
+          numComplete: numComplete,
+        }))
+        if(item.correct) {
+          
+          
+          ws.current.send(JSON.stringify({
+            msgType: 'qncorrect',
+            roomId: roomId,
+            username: username
+          }))
+        }
+        // setQnComplete(true)
+      }
       
+      // setNumComplete(numComplete + 1)
       
+      // setQuestionsCompleted(questionsCompleted + 1)
     }
   }
 
