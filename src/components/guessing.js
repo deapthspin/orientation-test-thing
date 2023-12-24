@@ -155,15 +155,20 @@ function Guessing(props) {
           // console.log('add')
           // console.log('thats 1')
           if(numComplete >= playernum) {
-            clearInterval(intervalid)
+            // clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
             // cangetscore = true
             if(questionsCompleted < 10) {
-              // chooseimage() 
-              setIsVoting(true)
+               
+              if(!isVoting) {
+                setIsVoting(true)
+              } else {
+                chooseimage()
+              }
+              
                         
             } else if(questionsCompleted >= 10) {
               clearInterval(intervalid)
