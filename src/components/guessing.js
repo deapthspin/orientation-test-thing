@@ -148,7 +148,7 @@ function Guessing(props) {
         if(data.msgType === 'qndone') {
           
             setNumComplete(numComplete += 1)
-          console.log('aaaa')
+          console.log('aaaa', numComplete)
           
           // console.log('add')
           // console.log('thats 1')
@@ -291,11 +291,11 @@ function Guessing(props) {
         // if(item.correct) {
           
           
-        //   ws.current.send(JSON.stringify({
-        //     msgType: 'qncorrect',
-        //     roomId: roomId,
-        //     username: username
-        //   }))
+          ws.current.send(JSON.stringify({
+            msgType: 'qncorrect',
+            roomId: roomId,
+            username: username
+          }))
         // }
         // setQnComplete(true)
       }
