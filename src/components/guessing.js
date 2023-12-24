@@ -148,7 +148,7 @@ function Guessing(props) {
         if(data.msgType === 'qndone') {
           
             setNumComplete(numComplete += 1)
-
+          console.log('aaaa')
           
           // console.log('add')
           // console.log('thats 1')
@@ -397,7 +397,7 @@ function Guessing(props) {
           <h1>score: {score}</h1>
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
         </div>}
-        {console.log(plrScores)}
+        {/* {console.log(plrScores)} */}
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           <ol>
             {plrScores.map((plr) => (
