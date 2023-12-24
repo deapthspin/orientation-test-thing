@@ -288,15 +288,15 @@ function Guessing(props) {
           roomId: roomId,
           numComplete: numComplete,
         }))
-        if(item.correct) {
+        // if(item.correct) {
           
           
-          ws.current.send(JSON.stringify({
-            msgType: 'qncorrect',
-            roomId: roomId,
-            username: username
-          }))
-        }
+        //   ws.current.send(JSON.stringify({
+        //     msgType: 'qncorrect',
+        //     roomId: roomId,
+        //     username: username
+        //   }))
+        // }
         // setQnComplete(true)
       }
       
