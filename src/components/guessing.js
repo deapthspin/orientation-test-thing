@@ -161,7 +161,7 @@ function Guessing(props) {
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
             // cangetscore = true
-            if(isowner === 'yes' && questionsCompleted < 10) {
+            if(questionsCompleted < 10) {
               // chooseimage() 
               setIsVoting(true)
                         
@@ -342,6 +342,7 @@ function Guessing(props) {
           <h1>{question}</h1>
         </div>}
         {isVoting && <div>
+          <h1>abcd</h1>
           {playerans.map((plr) => (
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
@@ -352,7 +353,7 @@ function Guessing(props) {
         {isVoting && <h1>voting time</h1>}
 
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
-        {isowner !== 'yes' && !qnComplete && <div>
+        {isowner !== 'yes' && !isVoting && <div>
             {cards.map((card) => (
               <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
                   <h1>{card.text}</h1>
