@@ -22,7 +22,7 @@ function Guessing(props) {
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState([])
   const [playerans, setPlayerans] = useState([])
-  const [votedPlayer, setVotedPlayer] = useState({})
+  let [votedPlayer, setVotedPlayer] = useState({})
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
@@ -254,7 +254,7 @@ function Guessing(props) {
           // console.log(data.ans, 'sdfjsdfjhkbjkhsfdjkhjksdfjkhjhksfd')
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
         } else if(data.msgType === 'vote') {
-          console.log(data.voted)
+          console.log(data)
           console.log('abcdefg')
         } else if(data.msgType === 'consolelog') {
           console.log(data.msg)
@@ -341,7 +341,7 @@ function Guessing(props) {
   
   function vote(e) {
     setQnComplete(true)
-    setVotedPlayer(playerans[e.target.id])
+    setVotedPlayer(votedPlayer = playerans[e.target.id])
   }
 
   return (
