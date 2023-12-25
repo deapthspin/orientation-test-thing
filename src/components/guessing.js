@@ -196,6 +196,7 @@ function Guessing(props) {
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
           if(isVoting) {
+            setIsVoting(false)
             ws.current.send(JSON.stringify({
               roomId: roomId,
               msgType: 'vote',
