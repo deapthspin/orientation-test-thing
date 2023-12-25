@@ -205,7 +205,7 @@ function Guessing(props) {
             ws.current.send(JSON.stringify({
               roomId: roomId,
               msgType: 'consolelog',
-              msg: 'isvotingtruueeeee'
+              msg: votedPlayer
             }))
             ws.current.send(JSON.stringify({
               roomId: roomId,
