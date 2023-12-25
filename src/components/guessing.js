@@ -341,7 +341,14 @@ function Guessing(props) {
   
   function vote(e) {
     setQnComplete(true)
+    
     setVotedPlayer(votedPlayer = playerans[e.target.id])
+
+    ws.current.send(JSON.stringify({
+      msgType: 'consolelog',
+      roomId: roomId,
+      msg: `${playerans[e.target.id]}, ${e.target.id}, ${votedPlayer}`
+    }))
   }
 
   return (
