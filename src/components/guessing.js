@@ -13,7 +13,7 @@ function Guessing(props) {
   const [qnComplete, setQnComplete] = useState(false)
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
-  const [isVoting, setIsVoting] = useState(false)
+  let [isVoting, setIsVoting] = useState(false)
 
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
@@ -164,7 +164,7 @@ function Guessing(props) {
             if(questionsCompleted < 10) {
                
               if(!isVoting) {
-                setIsVoting(true)
+                setIsVoting(isVoting = true)
               }
               
                         
