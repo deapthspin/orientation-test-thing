@@ -195,8 +195,18 @@ function Guessing(props) {
           }
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
+          ws.current.send(JSON.stringify({
+            roomId: roomId,
+            msgType: 'consolelog',
+            msg: `${isVoting} jajajajajajajaja`
+          }))
           if(isVoting) {
-            setIsVoting(false)
+            // setIsVoting(false)
+            ws.current.send(JSON.stringify({
+              roomId: roomId,
+              msgType: 'consolelog',
+              msg: 'isvotingtruueeeee'
+            }))
             ws.current.send(JSON.stringify({
               roomId: roomId,
               msgType: 'vote',
@@ -245,6 +255,9 @@ function Guessing(props) {
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
         } else if(data.msgType === 'vote') {
           console.log(data.voted)
+          console.log('abcdefg')
+        } else if(data.msgType === 'consolelog') {
+          console.log(data.msg)
         }
       }
     }
