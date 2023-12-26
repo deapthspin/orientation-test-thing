@@ -22,7 +22,7 @@ function Guessing(props) {
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState([])
   const [playerans, setPlayerans] = useState([])
-  let [votedPlayer, setVotedPlayer] = useState('')
+  const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
@@ -349,9 +349,9 @@ function Guessing(props) {
       ws.current.send(JSON.stringify({
         msgType: 'consolelog',
         roomId: roomId,
-        msg: playerans[e.target.id].names
+        msg: playerans[e.target.id].name
       }))
-      setVotedPlayer(votedPlayer = playerans[e.target.id].name)
+      setVotedPlayer(playerans[e.target.id].name)
     }
     
 
