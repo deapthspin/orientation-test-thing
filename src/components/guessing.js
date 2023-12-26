@@ -346,8 +346,10 @@ function Guessing(props) {
 
   function vote(e) {
     setQnComplete(true)
+    if(!votedPlayer && playerans[e.target.id]) {
+      setVotedPlayer(votedPlayer = playerans[e.target.id])
+    }
     
-    setVotedPlayer(votedPlayer = playerans[e.target.id])
 
     ws.current.send(JSON.stringify({
       msgType: 'consolelog',
