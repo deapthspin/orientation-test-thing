@@ -22,7 +22,7 @@ function Guessing(props) {
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState([])
   const [playerans, setPlayerans] = useState([])
-  let [votedPlayer, setVotedPlayer] = useState({})
+  let [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
@@ -346,7 +346,7 @@ function Guessing(props) {
       msg: [votedPlayer, playerans[e.target.id], playerans]
     }))
     if(!votedPlayer.length && playerans[e.target.id]) {
-      setVotedPlayer(votedPlayer = [...playerans[e.target.id]])
+      setVotedPlayer(votedPlayer = playerans[e.target.id].name)
     }
     
 
