@@ -155,6 +155,7 @@ function Guessing(props) {
             // clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
+            
             let temp = questionsCompleted + 1
             setQuestionsCompleted(questionsCompleted = temp)
             // cangetscore = true
@@ -162,6 +163,9 @@ function Guessing(props) {
                
               if(!isVoting) {
                 setIsVoting(isVoting = true)
+              } else {
+                setIsVoting(false)
+                chooseimage()
               }
               
                         
