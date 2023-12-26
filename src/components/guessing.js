@@ -22,7 +22,7 @@ function Guessing(props) {
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState([])
   const [playerans, setPlayerans] = useState([])
-  let [votedPlayer, setVotedPlayer] = useState(undefined)
+  let [votedPlayer, setVotedPlayer] = useState({})
   const [question, setQuestion] = useState('')
   const ws = useRef()
 
