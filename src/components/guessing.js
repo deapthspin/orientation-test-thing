@@ -336,26 +336,21 @@ function Guessing(props) {
 
   }, [])
   
-  setInterval(() => {
-    ws.current.send(JSON.stringify({
-      msgType: 'consolelog',
-      roomId: roomId,
-      msg: votedPlayer
-    }))
-  }, 500)
+
 
   function vote(e) {
     setQnComplete(true)
+    ws.current.send(JSON.stringify({
+      msgType: 'consolelog',
+      roomId: roomId,
+      msg: [votedPlayer, playerans[e.target.id]]
+    }))
     if(!votedPlayer && playerans[e.target.id]) {
       setVotedPlayer(votedPlayer = playerans[e.target.id])
     }
     
 
-    ws.current.send(JSON.stringify({
-      msgType: 'consolelog',
-      roomId: roomId,
-      msg: votedPlayer
-    }))
+
   }
 
   return (
