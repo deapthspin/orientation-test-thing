@@ -346,6 +346,11 @@ function Guessing(props) {
       msg: [votedPlayer, playerans[e.target.id], playerans]
     }))
     if(!votedPlayer.length && playerans[e.target.id]) {
+      ws.current.send(JSON.stringify({
+        msgType: 'consolelog',
+        roomId: roomId,
+        msg: playerans[e.target.id].names
+      }))
       setVotedPlayer(votedPlayer = playerans[e.target.id].name)
     }
     
