@@ -192,24 +192,7 @@ function Guessing(props) {
           }
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
-          ws.current.send(JSON.stringify({
-            roomId: roomId,
-            msgType: 'consolelog',
-            msg: `${isVoting} jajajajajajajaja`
-          }))
-          if(isVoting) {
-            // setIsVoting(false)
-            ws.current.send(JSON.stringify({
-              roomId: roomId,
-              msgType: 'consolelog',
-              msg: {votedPlayer}
-            }))
-            ws.current.send(JSON.stringify({
-              roomId: roomId,
-              msgType: 'vote',
-              voted: votedPlayer
-            })) 
-          }
+
             ws.current.send(JSON.stringify({
               msgType: 'qndone',
               roomId: roomId,
@@ -340,19 +323,20 @@ function Guessing(props) {
 
   function vote(e) {
     setQnComplete(true)
-    ws.current.send(JSON.stringify({
-      msgType: 'consolelog',
-      roomId: roomId,
-      msg: [votedPlayer, playerans[e.target.id], playerans]
-    }))
-    if(!votedPlayer.length && playerans[e.target.id]) {
+
+    if(!qnComplete) {
+      setQnComplete(true)
       ws.current.send(JSON.stringify({
-        msgType: 'consolelog',
+        msgType: 'qndone',
         roomId: roomId,
-        msg: playerans[e.target.id].name
+        numComplete: numComplete,
       }))
-      setVotedPlayer(playerans[e.target.id].name)
     }
+    ws.current.send(JSON.stringify({
+      roomId: roomId,
+      msgType: 'vote',
+      voted: playerans[e.target.id]
+    }))  
     
 
 
