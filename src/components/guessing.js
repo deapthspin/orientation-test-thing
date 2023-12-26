@@ -33,7 +33,7 @@ function Guessing(props) {
   //       .then((state) => {
   //         if (state === 'granted') {
   //           window.addEventListener('deviceorientation', handleOrientation);
-  //           console.log('k')
+
   //         } else {
   //           console.error('Request to access the orientation was rejected');
   //         }
@@ -41,7 +41,7 @@ function Guessing(props) {
   //       .catch(console.error);
   //   } else {
   //     // Handle regular non iOS 13+ devices.
-  //     console.log('pas')
+
   //     window.addEventListener('deviceorientation', handleOrientation);
   //   }
   // }
@@ -61,17 +61,16 @@ function Guessing(props) {
   // }, [beta, gamma])
 
   useEffect(() => {
-    // console.log('qncomplete cjhanged', qnComplete)
+
     if(!qnComplete && isowner === 'yes') {
-        // console.log('timer start')
-        
+
         setSecondsLeft(secondsLeft = 20)
         setIntervalid(0)
         let temp = setInterval(() => {
-          // console.log(playerlist)
+
           // setSecondsLeft(secondsLeft = 20)
           setIntervalid(intervalid = temp)
-          // console.log(typeof(temp), temp, intervalid)
+
           
 
           if(secondsLeft > 0) {
@@ -82,7 +81,7 @@ function Guessing(props) {
             setSecondsLeft(secondsLeft = temp)
             
           } else {
-            // console.log('fail')
+
             
             setNumComplete(numComplete = playernum)
             
@@ -99,12 +98,12 @@ function Guessing(props) {
               numComplete: numComplete,
             }))
           setSecondsLeft(secondsLeft = 20)
-          // console.log(numComplete, 'aaa')
+
           }
           
         }, 1000)
 
-        // console.log(temp.toString())
+
 
       
     }
@@ -119,7 +118,7 @@ function Guessing(props) {
 
     }
     setPlrScores(plrScores = temp)
-    console.log(plrScores, temp, playerlist)
+
   }, [])
 
   function chooseimage() {
@@ -150,10 +149,8 @@ function Guessing(props) {
         if(data.msgType === 'qndone') {
           
             setNumComplete(numComplete += 1)
-          console.log('aaaa', numComplete)
-          
-          // console.log('add')
-          // console.log('thats 1')
+
+
           if(numComplete >= playernum) {
             // clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
@@ -186,9 +183,9 @@ function Guessing(props) {
             setQnComplete(false)
             
           }
-          // console.log(data.numComplete, numComplete)
+
         } else if(data.msgType === 'questiondata') {
-          console.log(data)
+
           if(isowner === 'no') {
             setChosenImage(data.img)
             setOptions(data.options)
@@ -232,7 +229,7 @@ function Guessing(props) {
           // // let temp = [...plrScores]
           // // temp.push({name: data.name, score: data.score})
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
-          // console.log(plrScores, data)
+
         } else if(data.msgType === 'qncorrect') {
           
           if(data.username === username) {
@@ -242,20 +239,20 @@ function Guessing(props) {
             
           }
           for(let i = 0; i < plrScores.length; i++) {
-            // console.log(plrScores[i].name, data.username)
+
             if(plrScores[i].name === data.username) {
               plrScores[i].score += 1
             }
             
           }
-          // console.log('recieved')
+
           
         } else if(data.msgType === 'sendans') {
-          // console.log(data.ans, 'sdfjsdfjhkbjkhsfdjkhjksdfjkhjhksfd')
+
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
         } else if(data.msgType === 'vote') {
-          console.log(data)
-          console.log('abcdefg')
+          console.log(data, 'abcdefg')
+
         } else if(data.msgType === 'consolelog') {
           console.log(data.msg)
         }
@@ -339,6 +336,14 @@ function Guessing(props) {
 
   }, [])
   
+  setInterval(() => {
+    ws.current.send(JSON.stringify({
+      msgType: 'consolelog',
+      roomId: roomId,
+      msg: votedPlayer
+    }))
+  }, 500)
+
   function vote(e) {
     setQnComplete(true)
     
@@ -425,7 +430,7 @@ function Guessing(props) {
                 // setNumComplete(numComplete + 1)
                 
                 // setQuestionsCompleted(questionsCompleted + 1)
-                // console.log(numComplete)
+
                 
                 
               }}>{item.name} {item.correct.toString()}</button>
@@ -442,7 +447,7 @@ function Guessing(props) {
           <h1>score: {score}</h1>
           <h1>you got {(score / 10) * 100}% of questions correct</h1>
         </div>}
-        {/* {console.log(plrScores)} */}
+
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           <ol>
             {plrScores.map((plr) => (
