@@ -345,7 +345,7 @@ function Guessing(props) {
       roomId: roomId,
       msg: [votedPlayer, playerans[e.target.id], playerans]
     }))
-    if(!votedPlayer && playerans[e.target.id]) {
+    if(!votedPlayer.length && playerans[e.target.id]) {
       setVotedPlayer(votedPlayer = playerans[e.target.id])
     }
     
