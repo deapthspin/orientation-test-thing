@@ -164,7 +164,7 @@ function Guessing(props) {
               if(!isVoting) {
                 setIsVoting(isVoting = true)
               } else {
-                setIsVoting(false)
+                setIsVoting(isVoting = false)
                 chooseimage()
               }
               
