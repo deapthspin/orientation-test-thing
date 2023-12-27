@@ -166,7 +166,20 @@ function Guessing(props) {
                 setIsVoting(isVoting = true)
               } else {
                 setIsVoting(isVoting = false)
-                console.log(playerVotes)
+                let num = 0
+                let highest = {}
+                playerVotes.map((item) => {
+                  if(item.score > num) {
+                    num = item.score
+                    highest = item
+                  }
+                })
+                plrScores.map((plr) => {
+                  if(plr === highest) {
+                    plr.score += 1
+                  }
+                })
+
                 chooseimage()
               }
               
@@ -242,9 +255,9 @@ function Guessing(props) {
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
           tempvotes.map((item) => {
-            console.log(item.name, data, data.voted)
+            // console.log(item.name, data, data.voted)
             if(item.name === data.voted.name) {
-              console.log('yayyya')
+              // console.log('yayyya')
               item.score += 1
             }
           })
