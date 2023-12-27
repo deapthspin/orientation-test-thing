@@ -24,6 +24,7 @@ function Guessing(props) {
   const [playerans, setPlayerans] = useState([])
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
+  const [playerVotes, setPlayerVotes] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -118,7 +119,7 @@ function Guessing(props) {
 
     }
     setPlrScores(plrScores = temp)
-
+    setPlayerVotes(temp)
   }, [])
 
   function chooseimage() {
@@ -165,6 +166,7 @@ function Guessing(props) {
                 setIsVoting(isVoting = true)
               } else {
                 setIsVoting(isVoting = false)
+                console.log(playerVotes)
                 chooseimage()
               }
               
@@ -238,7 +240,15 @@ function Guessing(props) {
 
           setPlayerans([...playerans, {name: data.username, ans: data.ans}])
         } else if(data.msgType === 'vote') {
-          console.log(data, 'abcdefg')
+          let tempvotes = [...playerVotes]
+          tempvotes.map((item) => {
+            if(item.name === data.voted.name) {
+              item.score += 1
+            }
+          })
+          setPlayerVotes(tempvotes)
+          
+
 
         } else if(data.msgType === 'consolelog') {
           console.log(data.msg)
@@ -390,7 +400,7 @@ function Guessing(props) {
               </div>
             ))}
         </div>}
-        {isowner === 'no' && <button onClick={sendAns}>send answer</button>}
+        {isowner === 'no' && !isVoting && <button onClick={sendAns}>send answer</button>}
         
         
         {/* {isowner !== 'yes' && !qnComplete && <div>
