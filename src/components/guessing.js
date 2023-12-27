@@ -273,9 +273,17 @@ function Guessing(props) {
         } else if(data.msgType === 'consolelog') {
           console.log(data.msg)
         } else if(data.msgType === 'upscore') {
-          if(username === data.username && isowner === 'no') {
-            setScore(score += 1)
+          if(isowner !== 'yes') {
+            ws.current.send(JSON.stringify({
+              msgType: 'consolelog',
+              roomId: roomId,
+              msg: [username, data.name, data]
+            }))
+            if(username === data.name) {
+              setScore(score += 1)
+            }
           }
+          
          }
       }
     }
