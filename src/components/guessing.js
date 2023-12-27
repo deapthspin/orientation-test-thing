@@ -24,7 +24,7 @@ function Guessing(props) {
   const [playerans, setPlayerans] = useState([])
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
-  const [playerVotes, setPlayerVotes] = useState([])
+  let [playerVotes, setPlayerVotes] = useState([])
   const ws = useRef()
 
   // const handleClick = () => {
@@ -119,7 +119,7 @@ function Guessing(props) {
 
     }
     setPlrScores(plrScores = temp)
-    setPlayerVotes(temp)
+    setPlayerVotes(playerVotes = temp)
   }, [])
 
   function chooseimage() {
@@ -246,7 +246,8 @@ function Guessing(props) {
               item.score += 1
             }
           })
-          setPlayerVotes(tempvotes)
+          console.log(tempvotes)
+          setPlayerVotes(playerVotes = tempvotes)
           
 
 
