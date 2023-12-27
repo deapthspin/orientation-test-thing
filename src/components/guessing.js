@@ -179,7 +179,11 @@ function Guessing(props) {
                     plr.score += 1
                   }
                 })
-
+                ws.current.send(JSON.stringify({
+                  roomId: roomId,
+                  msgType: 'upscore',
+                  name: highest.name
+                }))
                 chooseimage()
               }
               
@@ -268,7 +272,11 @@ function Guessing(props) {
 
         } else if(data.msgType === 'consolelog') {
           console.log(data.msg)
-        }
+        } else if(data.msgType === 'upscore') {
+          if(username === data.username && isowner === 'no') {
+            setScore(score += 1)
+          }
+         }
       }
     }
 
