@@ -242,7 +242,9 @@ function Guessing(props) {
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
           tempvotes.map((item) => {
+            console.log(item.name, data, data.voted)
             if(item.name === data.voted.name) {
+              console.log('yayyya')
               item.score += 1
             }
           })
