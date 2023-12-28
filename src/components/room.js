@@ -133,7 +133,7 @@ function Room(props) {
                         ))}
                     </div>
                 </div>}
-                {isowner === 'no' && <div className='cards'>
+                {isOwner === 'no' && <div className='cards'>
                     {cards.map((card) => (
                         <div className={`card-${card.colour}`}>
                             <h1>{card.text}</h1>
