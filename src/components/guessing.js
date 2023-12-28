@@ -482,12 +482,12 @@ function Guessing(props) {
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           {console.log(plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'])}
-          <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))[0].name}</h1>
+          <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'].name}</h1>
           <ol>
             {plrScores.map((plr) => (
               <li>
                 {/* <h1>dsbnfjksnd</h1> */}
-                {plr.name}: {plr.score}
+                {plr.name}: {plr.score - 1}
 
               </li>
             ))}
