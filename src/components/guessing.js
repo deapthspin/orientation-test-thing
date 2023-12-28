@@ -163,7 +163,7 @@ function Guessing(props) {
             console.log(isVoting, questionsCompleted)
             
             // cangetscore = true
-            if(questionsCompleted < 10) {
+            if(questionsCompleted < 3) {
                
               if(!isVoting) {
                 setIsVoting(isVoting = true)
