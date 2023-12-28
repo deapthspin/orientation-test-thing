@@ -133,14 +133,14 @@ function Room(props) {
                         ))}
                     </div>
                 </div>}
-                <div className='cards'>
+                {isowner === 'no' && <div className='cards'>
                     {cards.map((card) => (
                         <div className={`card-${card.colour}`}>
                             <h1>{card.text}</h1>
                             {/* <h1>{card.colour}</h1> */}
                         </div>
                     ))}
-                </div>
+                </div>}
                 {!players.length && <h1>this room does not exist</h1>}
             </div>}
            {gameStarted && <div>

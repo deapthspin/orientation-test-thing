@@ -156,9 +156,11 @@ function Guessing(props) {
             // clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
+            if(isVoting) {
+              let temp = questionsCompleted + 1
+              setQuestionsCompleted(questionsCompleted = temp)
+            }
             
-            let temp = questionsCompleted + 1
-            setQuestionsCompleted(questionsCompleted = temp)
             // cangetscore = true
             if(questionsCompleted < 10) {
                
@@ -188,7 +190,7 @@ function Guessing(props) {
               }
               
                         
-            } else if(questionsCompleted >= 10) {
+            } else if(questionsCompleted >= 3) {
               clearInterval(intervalid)
               setFinished(true)
               console.log('finished', finished)
@@ -481,6 +483,7 @@ function Guessing(props) {
         </div>}
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
+          <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score))).name}</h1>
           <ol>
             {plrScores.map((plr) => (
               <li>
