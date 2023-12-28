@@ -160,7 +160,6 @@ function Guessing(props) {
               let temp = questionsCompleted + 1
               setQuestionsCompleted(questionsCompleted = temp)
             }
-            console.log(isVoting, questionsCompleted)
             
             // cangetscore = true
             if(questionsCompleted < 3) {
@@ -262,13 +261,10 @@ function Guessing(props) {
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
           tempvotes.map((item) => {
-            // console.log(item.name, data, data.voted)
             if(item.name === data.voted.name) {
-              // console.log('yayyya')
               item.score += 1
             }
           })
-          console.log(tempvotes)
           setPlayerVotes(playerVotes = tempvotes)
           
 
@@ -480,7 +476,7 @@ function Guessing(props) {
         {finished && isowner === 'no' && <div>
           <h1>completed</h1>
           <h1>score: {score}</h1>
-          <h1>you got {(score / 10) * 100}% of questions correct</h1>
+          <h1></h1>
         </div>}
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
