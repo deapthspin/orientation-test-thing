@@ -476,7 +476,7 @@ function Guessing(props) {
         </div>}
         {finished && isowner === 'no' && <div>
           <h1>completed</h1>
-          <h1>score: {score}</h1>
+          <h1>score: {score + 1}</h1>
           <h1></h1>
         </div>}
 
