@@ -410,8 +410,9 @@ function Guessing(props) {
         {isowner === 'yes' && <div>
           <h1>{question}</h1>
         </div>}
+        <h1>{questionsCompleted}, {finished}</h1>
         {isVoting && <div>
-          <h1>abcd</h1>
+          
           {playerans.map((plr, index) => (
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
