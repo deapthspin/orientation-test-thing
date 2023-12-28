@@ -160,6 +160,7 @@ function Guessing(props) {
               let temp = questionsCompleted + 1
               setQuestionsCompleted(questionsCompleted = temp)
             }
+            console.log(isVoting, questionsCompleted)
             
             // cangetscore = true
             if(questionsCompleted < 10) {
