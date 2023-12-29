@@ -311,7 +311,10 @@ function Guessing(props) {
 
   function addText(e) {
     let temp = [...ans]
-    temp.push(`${e.target.innerText} `)
+    if(!temp.includes(e.target.innerText)) {
+      temp.push(`${e.target.innerText} `)
+    }
+    
     setAns(temp)
   }
 
