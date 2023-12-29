@@ -29,8 +29,10 @@
     width: 1200px;
 }
 .card-white {
-    width: 200px;
-    height: 300px;
+    max-width: 200px;
+    max-height: 300px;
+    min-width: 40px;
+    min-height: 60px;
     border: 1px solid black;
     border-radius: 5%;
     margin-left: 5px;
@@ -38,8 +40,10 @@
 }
 
 .card-black {
-    width: 200px;
-    height: 300px;
+    max-width: 200px;
+    max-height: 300px;
+    min-width: 40px;
+    min-height: 60px;
     border: 1px solid black;
     background-color: black;
     color: white;
@@ -47,4 +51,8 @@
     margin-left: 5px;
     font-size: 10px;
 
+}
+
+.guessing-cards {
+    display:flex;
 }

@@ -427,7 +427,7 @@ function Guessing(props) {
         {isVoting && <h1>voting time</h1>}
 
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
-        {isowner !== 'yes' && !isVoting && <div>
+        {isowner !== 'yes' && !isVoting && <div className='guessing-cards'>
             {cards.map((card) => (
               <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
                   <h1>{card.text}</h1>
