@@ -311,7 +311,7 @@ function Guessing(props) {
 
   function addText(e) {
     let temp = [...ans]
-    if(!temp.includes(e.target.innerText)) {
+    if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
       ws.current.send(JSON.stringify({
         roomId: roomId,
