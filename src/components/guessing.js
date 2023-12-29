@@ -312,8 +312,14 @@ function Guessing(props) {
   function addText(e) {
     let temp = [...ans]
     if(!temp.includes(e.target.innerText)) {
+      // console.log(temp, e.target.innerText)
+      ws.current.send(JSON.stringify({
+        roomId: roomId,
+        msgType: 'consolelog',
+        msg: [temp, e.target.innerText]
+      }))
       temp.push(`${e.target.innerText} `)
-    }
+    } 
     
     setAns(temp)
   }
@@ -473,7 +479,7 @@ function Guessing(props) {
           ))}
         </div>} */}
       </div>}
-        {(qnComplete && !finished) || isowner === 'yes' && <div>
+        {qnComplete && !finished || isowner === 'yes' && <div>
             <h1>people who answered</h1>
             <h2>{numComplete}/{playernum}</h2>
         </div>}
@@ -484,13 +490,13 @@ function Guessing(props) {
         </div>}
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
-          {console.log(plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'])}
+          {/* {console.log(plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'])} */}
           <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'].name}</h1>
           <ol>
             {plrScores.map((plr) => (
               <li>
                 {/* <h1>dsbnfjksnd</h1> */}
-                {plr.name}: {plr.score - 1}
+                {plr.name}: {plr.score > 0 ? plr.score - 1 : plr.score}
 
               </li>
             ))}
