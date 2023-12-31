@@ -115,7 +115,7 @@ function Room(props) {
     return (
         <div className='app'>
             {!gameStarted && <div>
-                {players.length && <div>
+                {<div>
                     {/* <h1>welcome to the room</h1> */}
                     {isOwner === 'yes' && <h1>you are the owner of the room</h1>}
                     <h2>room-{roomId}</h2>
@@ -141,7 +141,7 @@ function Room(props) {
                         </div>
                     ))}
                 </div>}
-                {!players.length && <h1>this room does not exist</h1>}
+                {/* {!players.length && <h1>this room does not exist</h1>} */}
             </div>}
            {gameStarted && <div>
                 <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length - 1} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
