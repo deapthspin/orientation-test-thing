@@ -440,6 +440,7 @@ function Guessing(props) {
         {isVoting && <h1>voting time</h1>}
         {isShowingWin && <div>
           <h1>highest votes: {highestVotes.name}</h1>
+          {console.log(playerans)}
           <h2>{playerans.filter((plr) => plr.name === highestVotes.name).ans.join('')}</h2>
         </div>}
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
