@@ -172,7 +172,7 @@ function Guessing(props) {
                 setIsVoting(isVoting = false)
                 let num = 0
                 let highest = {}
-                console.log(item, playerVotes, playerlist, plrScores)
+                console.log(playerVotes, playerlist, plrScores)
                 playerVotes.map((item) => {
                   if(item.score > num) {
                     num = item.score
