@@ -15,7 +15,7 @@ function Guessing(props) {
   const [finished, setFinished] = useState(false)
   let [isVoting, setIsVoting] = useState(false)
   let [isShowingWin, setIsShowingWin] = useState(false)
-  let [highestVotes, setHighestVotes] = useState([])
+  let [highestVotes, setHighestVotes] = useState({})
 
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
@@ -176,7 +176,8 @@ function Guessing(props) {
                   if(item.score > num) {
                     num = item.score
                     highest = item
-                    setHighestVotes(highestVotes = item)
+                    setHighestVotes(item)
+                    console.log(item, playerVotes)
                   }
                 })
                 
