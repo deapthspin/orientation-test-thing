@@ -76,12 +76,12 @@ function Room(props) {
 
     function startGame(e) {
         e.preventDefault()
-        if(players.length > 1) {
+        // if(players.length > 1) {
             ws.current.send(JSON.stringify({
                 roomId: roomId,
                 msgType: 'startgame'
             }))            
-        }
+        // }
 
     }
 
@@ -144,7 +144,7 @@ function Room(props) {
                 {/* {!players.length && <h1>this room does not exist</h1>} */}
             </div>}
            {gameStarted && <div>
-                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length - 1} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
+                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
             </div>}
         </div>
     )
