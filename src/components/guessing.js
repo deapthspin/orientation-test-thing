@@ -178,6 +178,8 @@ function Guessing(props) {
                     highest = item
                   }
                 })
+                console.log(highest, highestVotes)
+                
                 plrScores.map((plr) => {
                   if(plr === highest) {
                     plr.score += 1
@@ -188,7 +190,6 @@ function Guessing(props) {
                   msgType: 'upscore',
                   name: highest.name
                 }))
-                console.log(highest, highestVotes)
                 setIsShowingWin(isShowingWin = true)
                 setHighestVotes(highestVotes.push(highest))
                 
