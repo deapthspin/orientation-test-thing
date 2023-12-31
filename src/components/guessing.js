@@ -182,7 +182,7 @@ function Guessing(props) {
                   }
                 })
                 
-                
+                console.log(highestVotes)
                 plrScores.map((plr) => {
                   if(plr === highest) {
                     plr.score += 1
