@@ -14,6 +14,8 @@ function Guessing(props) {
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
   let [isVoting, setIsVoting] = useState(false)
+  let [isShowingWin, setIsShowingWin] = useState(false)
+  let [highestVotes, setHighestVotes] = useState({})
 
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
@@ -186,7 +188,12 @@ function Guessing(props) {
                   msgType: 'upscore',
                   name: highest.name
                 }))
-                chooseimage()
+                setIsShowingWin(isShowingWin = true)
+                setHighestVotes(highestVotes = highest)
+                setTimeout(() => {
+                  setIsShowingWin(isShowingWin = false)
+                  chooseimage()
+                }, 2500)
               }
               
                         
@@ -431,7 +438,10 @@ function Guessing(props) {
           ))}
         </div>}
         {isVoting && <h1>voting time</h1>}
-
+        {isShowingWin && <div>
+          <h1>highest votes: {highestVotes.name}</h1>
+          <h2>{playerans.filter((plr) => plr.name === highestVotes.name).ans.join('')}</h2>
+        </div>}
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
         {isowner !== 'yes' && !isVoting && <div className='guessing-cards'>
             {cards.map((card) => (

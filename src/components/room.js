@@ -144,7 +144,7 @@ function Room(props) {
                 {/* {!players.length && <h1>this room does not exist</h1>} */}
             </div>}
            {gameStarted && <div>
-                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length} playerlist={players.slice(1)} roomId={roomId} isowner={isOwner} playername={username}/>
+                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length} playerlist={players} roomId={roomId} isowner={isOwner} playername={username}/>
             </div>}
         </div>
     )
