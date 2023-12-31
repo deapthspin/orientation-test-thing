@@ -188,9 +188,10 @@ function Guessing(props) {
                   msgType: 'upscore',
                   name: highest.name
                 }))
+                console.log(highest, highestVotes)
                 setIsShowingWin(isShowingWin = true)
                 setHighestVotes(highestVotes.push(highest))
-                console.log(highest, highestVotes)
+                
                 setTimeout(() => {
                   setIsShowingWin(isShowingWin = false)
                   chooseimage()
