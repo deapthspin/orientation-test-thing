@@ -177,7 +177,7 @@ function Guessing(props) {
                   if(item.score >= num) {
                     num = item.score
                     highest = item
-                    setHighestVotes(item)
+                    setHighestVotes(highestVotes = item)
                     
                   }
                 })
