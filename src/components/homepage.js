@@ -20,14 +20,14 @@ function Homepage(props) {
         e.preventDefault()
         // console.log('aa')
         const roomid = uuid()
-        if(inputName.trim()) {
+        
 
             await fetch('https://animalguessingpg.onrender.com/rooms', {
                 method: "POST",
                 body: JSON.stringify({
                     roomId: roomid,
-                    players: [`${inputName}`],
-                    roomOwner: inputName
+                    players: [],
+                    roomOwner: uuid()
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ function Homepage(props) {
             setIsOwner('yes')
             navigate(`/room/${roomid}`)
             
-        }
+        
 
     }
 
@@ -90,12 +90,13 @@ function Homepage(props) {
         <div className='main'>
             <h1>homepage</h1>
             <form>
-                <input placeholder='your username' onChange={(e) => setInputName(e.target.value)}/>                <br/>
                 <br/>
                 <button className='create-room' onClick={createRoom}>create room</button>
             </form>
             <h1>or</h1>
             <h2>join a room</h2>
+            <input placeholder='your username' onChange={(e) => setInputName(e.target.value)}/>
+
             <input placeholder='room code' onChange={(e) => setInputId(e.target.value)}/>
             <br/>
             <button className='joinbutton' onClick={joinRoom}>join</button>
