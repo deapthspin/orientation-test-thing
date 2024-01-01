@@ -447,7 +447,7 @@ function Guessing(props) {
         {isShowingWin && <div>
           <h1>highest votes: {highestVotes.name}</h1>
           {console.log(playerans, highestVotes, playerans.filter((plr) => plr.name === highestVotes.name.trim()))}
-          <h2>{playerans.filter((plr) => plr.name === highestVotes.name.trim()).ans.join('')}</h2>
+          <h2>{playerans.filter((plr) => plr.name === highestVotes.name.trim())['0'].ans.join('')}</h2>
         </div>}
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
         {isowner !== 'yes' && !isVoting && <div className='guessing-cards'>
