@@ -198,6 +198,7 @@ function Guessing(props) {
                 
                 setTimeout(() => {
                   setIsShowingWin(isShowingWin = false)
+                  
                   chooseimage()
                 }, 2500)
               }
@@ -449,8 +450,8 @@ function Guessing(props) {
           {console.log(playerans, highestVotes, playerans.filter((plr) => plr.name === highestVotes.name.trim()))}
           <h2>{playerans.filter((plr) => plr.name === highestVotes.name.trim())['0'].ans.join('')}</h2>
         </div>}
-        {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
-        {isowner !== 'yes' && !isVoting && <div className='guessing-cards'>
+        {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}w</h1>}
+        {isowner !== 'yes' && !isVoting && !isShowingWin && <div className='guessing-cards'>
             {cards.map((card) => (
               <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
                   <h1>{card.text}</h1>
