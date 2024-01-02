@@ -337,6 +337,7 @@ function Guessing(props) {
     if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
       setCardschosen(cardschosen.push({text: `${e.target.innerText}`, colour: colour}))
+      
       if(colour === 'white') {
         temp[0] = `${e.target.innerText} `
 
@@ -507,6 +508,7 @@ function Guessing(props) {
         <br/>
         <br/>
         {isowner !== 'yes' && !isVoting && !isShowingWin && <div className='guessing-cards'>
+            {console.log(cardschosen)}
             {cardschosen.map((card) => (
               <div className={`card-${card.colour}`}>
                   <h1>{card.text}</h1>
