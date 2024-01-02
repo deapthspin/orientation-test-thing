@@ -23,7 +23,7 @@ function Guessing(props) {
   const {playernum, roomId, isowner, playerlist, username, cards, setCards} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
-  const [ans, setAns] = useState([])
+  const [ans, setAns] = useState(['', ''])
   const [playerans, setPlayerans] = useState([])
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
@@ -331,16 +331,16 @@ function Guessing(props) {
     
   }, [])
 
-  function addText(e) {
+  function addText(e, colour) {
     let temp = [...ans]
     if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
-      ws.current.send(JSON.stringify({
-        roomId: roomId,
-        msgType: 'consolelog',
-        msg: [temp, e.target.innerText]
-      }))
-      temp.push(`${e.target.innerText} `)
+      if(colour === 'white') {
+        temp[0] = `${e.target.innerText} `
+      } else {
+        temp[1] = `${e.target.innerText} `
+      }
+      
     } 
     
     setAns(temp)
