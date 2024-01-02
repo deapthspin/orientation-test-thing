@@ -336,7 +336,9 @@ function Guessing(props) {
     let temp = [...ans]
     if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
-      setCardschosen(cardschosen.push({text: `${e.target.innerText}`, colour: colour}))
+      let temp2 = [...cardschosen]
+      temp2.push({text: `${e.target.innerText}`, colour: colour})
+      setCardschosen(cardschosen = temp2)
       
       if(colour === 'white') {
         temp[0] = `${e.target.innerText} `
