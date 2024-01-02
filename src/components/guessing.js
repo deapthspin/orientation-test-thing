@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 function Guessing(props) {
   const [alpha, setAlpha] = useState(0)
@@ -27,6 +28,7 @@ function Guessing(props) {
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
+  const navigate = useNavigate()
   const ws = useRef()
 
   // const handleClick = () => {
@@ -299,6 +301,10 @@ function Guessing(props) {
           
          } else if(data.msgType === 'kick') {
           console.log(data, 'kick msg')
+          if(data.username === username) {
+            navigate('/home')
+            window.alert('you got disconnected')
+          }
          }
       }
     }
