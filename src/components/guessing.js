@@ -373,7 +373,8 @@ function Guessing(props) {
         roomId: roomId,
         username: username
       }))
-      setAns([])
+      setAns(['', ''])
+      setCardschosen([{}, {}])
       if(!qnComplete) {
         setQnComplete(true)
         ws.current.send(JSON.stringify({
