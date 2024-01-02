@@ -410,6 +410,38 @@ function Guessing(props) {
 
   }
 
+  async function kick(e, username) {
+    e.preventDefault()
+    const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`)
+    const data = await res.json()
+
+    let tempplayerArr = [...data.players]
+    
+    tempplayerArr.splice(e.target.id, 1)
+
+    await fetch(`https://animalguessingpg.onrender.com/roomplayers/${roomId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            playerArr: tempplayerArr
+        })
+    })
+
+    ws.current.send(
+        JSON.stringify({
+            roomId: inputId,
+            username: username,
+            msgType: 'kick'
+        })
+    )
+    
+    navigate(`/room/${inputId}`)
+        
+    
+  }
+
   return (
     <div className="App">
       {/* <button onClick={handleClick}>enable</button>
@@ -441,6 +473,7 @@ function Guessing(props) {
               <h1>{plr.name}: {plr.ans.join('')}</h1>
               {isVoting && isowner !== 'yes' && plr.name === votedPlayer.name && <h2>voted</h2>}
               {isVoting && isowner !== 'yes' && <button onClick={vote} id={index}>vote</button>}
+              {isVoting && isowner === 'yes' && <button onClick={(e) => kick(e, plr.name)} id={index}>kick</button>}
             </div>
           ))}
         </div>}
