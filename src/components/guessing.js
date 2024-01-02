@@ -507,7 +507,7 @@ function Guessing(props) {
         <br/>
         <br/>
         <br/>
-        {isowner !== 'yes' && !isVoting && !isShowingWin && <div className='guessing-cards'>
+        {isowner !== 'yes' && cardschosen.length && !isVoting && !isShowingWin && <div className='guessing-cards'>
             {console.log(cardschosen)}
             {cardschosen.map((card) => (
               <div className={`card-${card.colour}`}>
