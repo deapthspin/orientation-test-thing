@@ -297,6 +297,8 @@ function Guessing(props) {
             }
           }
           
+         } else if(data.msgType === 'kick') {
+          console.log(data, 'kick msg')
          }
       }
     }
@@ -431,13 +433,12 @@ function Guessing(props) {
 
     ws.current.send(
         JSON.stringify({
-            roomId: inputId,
+            roomId: roomId,
             username: username,
             msgType: 'kick'
         })
     )
     
-    navigate(`/room/${inputId}`)
         
     
   }
