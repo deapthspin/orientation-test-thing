@@ -28,7 +28,7 @@ function Guessing(props) {
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
-  let [cardschosen, setCardschosen] = useState([])
+  let [cardschosen, setCardschosen] = useState([{}, {}])
   const navigate = useNavigate()
   const ws = useRef()
 
@@ -337,16 +337,18 @@ function Guessing(props) {
     if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
       let temp2 = [...cardschosen]
-      temp2.push({text: `${e.target.innerText}`, colour: colour})
-      setCardschosen(cardschosen = temp2)
+      
+      
       
       if(colour === 'white') {
         temp[0] = `${e.target.innerText} `
+        temp2[0] = ({text: `${e.target.innerText}`, colour: colour})
 
       } else {
         temp[1] = `${e.target.innerText} `
+        temp2[1] = ({text: `${e.target.innerText}`, colour: colour})
       }
-      
+      setCardschosen(cardschosen = temp2)
     } 
     
     setAns(temp)
