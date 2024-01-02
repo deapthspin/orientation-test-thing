@@ -155,7 +155,7 @@ function Guessing(props) {
 
 
           if(numComplete >= playernum) {
-            // clearInterval(intervalid)
+            clearInterval(intervalid)
             setSecondsLeft(secondsLeft = 20)
             setNumComplete(numComplete = 0)
             if(isVoting) {
