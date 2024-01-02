@@ -275,8 +275,8 @@ function Guessing(props) {
         } else if(data.msgType === 'sendans') {
           let temp = [...playerans]
           temp.push({name: data.username, ans: data.ans})
-          console.log(data)
           setPlayerans(temp)
+          console.log(playerans)
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
           tempvotes.map((item) => {
