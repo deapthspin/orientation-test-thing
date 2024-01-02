@@ -24,7 +24,7 @@ function Guessing(props) {
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState(['', ''])
-  const [playerans, setPlayerans] = useState([])
+  let [playerans, setPlayerans] = useState([])
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
@@ -275,7 +275,7 @@ function Guessing(props) {
         } else if(data.msgType === 'sendans') {
           let temp = [...playerans]
           temp.push({name: data.username, ans: data.ans})
-          setPlayerans(temp)
+          setPlayerans(playerans = temp)
           console.log(playerans)
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
