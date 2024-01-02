@@ -28,6 +28,7 @@ function Guessing(props) {
   const [votedPlayer, setVotedPlayer] = useState('')
   const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
+  let [cardschosen, setCardschosen] = useState([])
   const navigate = useNavigate()
   const ws = useRef()
 
@@ -335,8 +336,10 @@ function Guessing(props) {
     let temp = [...ans]
     if(!temp.includes(`${e.target.innerText} `)) {
       // console.log(temp, e.target.innerText)
+      setCardschosen(cardschosen.push({text: `${e.target.innerText}`, colour: colour}))
       if(colour === 'white') {
         temp[0] = `${e.target.innerText} `
+
       } else {
         temp[1] = `${e.target.innerText} `
       }
@@ -490,7 +493,7 @@ function Guessing(props) {
           {console.log(playerans, highestVotes, playerans.filter((plr) => plr.name === highestVotes.name.trim()))}
           <h2>{playerans.filter((plr) => plr.name === highestVotes.name.trim())['0'].ans.join('')}</h2>
         </div>}
-        {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}w</h1>}
+        {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
         {isowner !== 'yes' && !isVoting && !isShowingWin && <div className='guessing-cards'>
             {cards.map((card) => (
               <div className={`card-${card.colour}`} onClick={(e) => addText(e, card.colour)}>
@@ -500,7 +503,17 @@ function Guessing(props) {
             ))}
         </div>}
         {isowner === 'no' && !isVoting && <button onClick={sendAns}>send answer</button>}
-        
+        <br/>
+        <br/>
+        <br/>
+        {isowner !== 'yes' && !isVoting && !isShowingWin && <div className='guessing-cards'>
+            {cardschosen.map((card) => (
+              <div className={`card-${card.colour}`}>
+                  <h1>{card.text}</h1>
+                  {/* <h1>{card.colour}</h1> */}
+              </div>
+            ))}
+        </div>}
         
         {/* {isowner !== 'yes' && !qnComplete && <div>
           {options.map((item) => (
