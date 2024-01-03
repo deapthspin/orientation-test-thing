@@ -234,7 +234,15 @@ function Guessing(props) {
           }
         } else if (data.msgType === 'timeout' && isowner === 'no') {
           setNumComplete(numComplete = 0)
+          let tempnum1 = 0
+          let tempnum2 = 0
 
+          while(tempnum1 === tempnum2 && cards[tempnum1].colour !== 'white' && cards[tempnum2].colour !== 'black') {
+            tempnum1 = Math.floor(Math.random() * cards.length)
+            tempnum2 = Math.floor(Math.random() * cards.length)
+          }
+          setAns([`${cards[tempnum1]} `, `${cards[tempnum1]} `])
+          sendAns()
             ws.current.send(JSON.stringify({
               msgType: 'qndone',
               roomId: roomId,
