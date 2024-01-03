@@ -67,7 +67,7 @@ function Guessing(props) {
   // }, [beta, gamma])
 
   useEffect(() => {
-
+    console.log(qnComplete)
     if(!qnComplete && isowner === 'yes') {
         console.log('yay')
         setSecondsLeft(secondsLeft = 20)
