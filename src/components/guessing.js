@@ -252,7 +252,7 @@ function Guessing(props) {
             }))
           
           
-          setQnComplete(true)
+          setQnComplete(qnComplete = true)
           let temp = questionsCompleted + 1
           setQuestionsCompleted(temp)
           
