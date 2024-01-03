@@ -375,6 +375,7 @@ function Guessing(props) {
       }))
       setAns(['', ''])
       setCardschosen([{}, {}])
+      setPlayerans([])
       if(!qnComplete) {
         setQnComplete(true)
         ws.current.send(JSON.stringify({
