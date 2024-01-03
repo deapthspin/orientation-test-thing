@@ -20,7 +20,7 @@ function Guessing(props) {
 
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
-  const {question, setQuestion, playernum, roomId, isowner, playerlist, username, cards, setCards} = props
+  const {question, setQuestion, chooseimage, playernum, roomId, isowner, playerlist, username, cards, setCards} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState(['', ''])
