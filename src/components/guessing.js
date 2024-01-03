@@ -20,13 +20,13 @@ function Guessing(props) {
 
   let [numComplete, setNumComplete] = useState(0)
   let [intervalid, setIntervalid] = useState (0)
-  const {playernum, roomId, isowner, playerlist, username, cards, setCards} = props
+  const {question, setQuestion, playernum, roomId, isowner, playerlist, username, cards, setCards} = props
   let [secondsLeft, setSecondsLeft] = useState(0)
   let [plrScores, setPlrScores] = useState([])
   const [ans, setAns] = useState(['', ''])
   let [playerans, setPlayerans] = useState([])
   const [votedPlayer, setVotedPlayer] = useState('')
-  const [question, setQuestion] = useState('')
+  // const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
   let [cardschosen, setCardschosen] = useState([{}, {}])
   const navigate = useNavigate()
@@ -127,19 +127,19 @@ function Guessing(props) {
     setPlayerVotes(playerVotes = temp)
   }, [])
 
-  function chooseimage() {
-    // setNumComplete(0)
+  // function chooseimage() {
+  //   // setNumComplete(0)
       
-    const questions = [
-      'question 1',
-      'question 2',
-      'question 3',
-      'question 4',
-    ]
-    let random = Math.floor(Math.random() * questions.length)
-    setQuestion(questions[random])
+  //   const questions = [
+  //     'question 1',
+  //     'question 2',
+  //     'question 3',
+  //     'question 4',
+  //   ]
+  //   let random = Math.floor(Math.random() * questions.length)
+  //   setQuestion(questions[random])
     
-  }
+  // }
 
   
 

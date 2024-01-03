@@ -11,6 +11,8 @@ function Room(props) {
     const {isOwner, setIsOwner, setUsername, username} = props
     const [gameStarted, setGameStarted] = useState(false)
     const [cards, setCards] = useState([])
+    const [question, setQuestion] = useState('')
+
     async function getData() {
         const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`)
         const data = await res.json()
@@ -110,7 +112,23 @@ function Room(props) {
 
     useEffect(() => {
         getCards()
+        chooseimage()
     }, [])
+
+    function chooseimage() {
+        // setNumComplete(0)
+          
+        const questions = [
+          'question 1',
+          'question 2',
+          'question 3',
+          'question 4',
+        ]
+        let random = Math.floor(Math.random() * questions.length)
+        setQuestion(questions[random])
+        
+      }
+    
 
     return (
         <div className='app'>
@@ -133,6 +151,8 @@ function Room(props) {
                         ))}
                     </div>
                 </div>}
+
+                {isOwner === 'no' && <h2>1st qn: {question}</h2>}
                 {isOwner === 'no' && <div className='cards'>
                     {cards.map((card) => (
                         <div className={`card-${card.colour}`}>
@@ -144,7 +164,7 @@ function Room(props) {
                 {/* {!players.length && <h1>this room does not exist</h1>} */}
             </div>}
            {gameStarted && <div>
-                <Guessing cards={cards} setCards={setCards} username={username} playernum={players.length} playerlist={players} roomId={roomId} isowner={isOwner} playername={username}/>
+                <Guessing question={question} setQuestion={setQuestion} chooseimage={chooseimage} cards={cards} setCards={setCards} username={username} playernum={players.length} playerlist={players} roomId={roomId} isowner={isOwner} playername={username}/>
             </div>}
         </div>
     )
