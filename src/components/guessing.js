@@ -11,7 +11,7 @@ function Guessing(props) {
   // const [correctAns, setCorrectAns] = useState('')
   const [options, setOptions] = useState([])
   let [score, setScore] = useState(0)
-  const [qnComplete, setQnComplete] = useState(false)
+  let [qnComplete, setQnComplete] = useState(false)
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
   let [isVoting, setIsVoting] = useState(false)
@@ -69,7 +69,7 @@ function Guessing(props) {
   useEffect(() => {
 
     if(!qnComplete && isowner === 'yes') {
-
+        console.log('yay')
         setSecondsLeft(secondsLeft = 20)
         setIntervalid(0)
         let temp = setInterval(() => {
