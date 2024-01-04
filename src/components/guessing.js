@@ -11,7 +11,7 @@ function Guessing(props) {
   // const [correctAns, setCorrectAns] = useState('')
   const [options, setOptions] = useState([])
   let [score, setScore] = useState(0)
-  let [qnComplete, setQnComplete] = useState(false)
+  const [qnComplete, setQnComplete] = useState(false)
   let [questionsCompleted, setQuestionsCompleted] = useState(0)
   const [finished, setFinished] = useState(false)
   let [isVoting, setIsVoting] = useState(false)
@@ -205,7 +205,7 @@ function Guessing(props) {
                   
                   chooseimage()
                   console.log(qnComplete)
-                  setQnComplete(qnComplete = false)
+                  setQnComplete(false)
                   console.log(qnComplete)
                 }, 2500)
               }
@@ -254,7 +254,7 @@ function Guessing(props) {
             }))
           
           
-          setQnComplete(qnComplete = true)
+          setQnComplete(true)
           let temp = questionsCompleted + 1
           setQuestionsCompleted(temp)
           
@@ -270,7 +270,7 @@ function Guessing(props) {
         } else if(data.msgType === 'qncorrect') {
           
           if(data.username === username) {
-            // setQnComplete(qnComplete = true)
+            // setQnComplete(true)
             setScore(score += 1)
             // cangetscore = false
             
@@ -395,7 +395,7 @@ function Guessing(props) {
           roomId: roomId,
           numComplete: numComplete,
         }))
-        setQnComplete(qnComplete = true)
+        setQnComplete(true)
         // if(item.correct) {
           
           
@@ -405,7 +405,7 @@ function Guessing(props) {
           //   username: username
           // }))
         // }
-        // setQnComplete(qnComplete = true)
+        // setQnComplete(true)
       }
       
       // setNumComplete(numComplete + 1)
@@ -431,7 +431,7 @@ function Guessing(props) {
         roomId: roomId,
         numComplete: numComplete,
       }))
-      setQnComplete(qnComplete = true)
+      setQnComplete(true)
     }
     ws.current.send(JSON.stringify({
       roomId: roomId,
@@ -544,7 +544,7 @@ function Guessing(props) {
               <button onClick={(e) => {
                 clearInterval(intervalid)
                 if(!qnComplete) {
-                  setQnComplete(qnComplete = true)
+                  setQnComplete(true)
                   ws.current.send(JSON.stringify({
                     msgType: 'qndone',
                     roomId: roomId,
@@ -559,7 +559,7 @@ function Guessing(props) {
                       username: username
                     }))
                   }
-                  // setQnComplete(qnComplete = true)
+                  // setQnComplete(true)
                 }
                 
                 // setNumComplete(numComplete + 1)
