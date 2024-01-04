@@ -427,14 +427,14 @@ function Guessing(props) {
   function vote(e) {
 
 
-    if(!qnComplete) {
+    // if(!qnComplete) {
       ws.current.send(JSON.stringify({
         msgType: 'qndone',
         roomId: roomId,
         numComplete: numComplete,
       }))
       setQnComplete(qnComplete = true)
-    }
+    // }
     ws.current.send(JSON.stringify({
       roomId: roomId,
       msgType: 'vote',
