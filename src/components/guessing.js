@@ -163,9 +163,9 @@ function Guessing(props) {
             setNumComplete(numComplete = 0)
             if(isVoting) {
               let temp = questionsCompleted + 1
-              setQnComplete(false)
+              
               setQuestionsCompleted(questionsCompleted = temp)
-              setQnComplete(true)
+              
 
             }
             
