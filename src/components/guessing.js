@@ -165,6 +165,8 @@ function Guessing(props) {
               let temp = questionsCompleted + 1
               setQnComplete(false)
               setQuestionsCompleted(questionsCompleted = temp)
+              setQnComplete(true)
+
             }
             
             // cangetscore = true
