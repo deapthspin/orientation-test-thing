@@ -423,15 +423,15 @@ function Guessing(props) {
 
 
   function vote(e) {
-    setQnComplete(qnComplete = true)
+
 
     if(!qnComplete) {
-      setQnComplete(qnComplete = true)
       ws.current.send(JSON.stringify({
         msgType: 'qndone',
         roomId: roomId,
         numComplete: numComplete,
       }))
+      setQnComplete(qnComplete = true)
     }
     ws.current.send(JSON.stringify({
       roomId: roomId,
