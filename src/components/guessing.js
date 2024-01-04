@@ -530,7 +530,7 @@ function Guessing(props) {
               </div>
             ))}
         </div>}
-        {isowner === 'no' && !isVoting && <button onClick={sendAns}>send answer</button>}
+        {isowner === 'no' && !isVoting && canVote && <button onClick={sendAns}>send answer</button>}
         <br/>
         <br/>
         <br/>
