@@ -163,7 +163,7 @@ function Guessing(props) {
             setNumComplete(numComplete = 0)
             if(isVoting) {
               let temp = questionsCompleted + 1
-              setQnComplete(false)
+              // setQnComplete(false)
               setQuestionsCompleted(questionsCompleted = temp)
             }
             
@@ -204,6 +204,7 @@ function Guessing(props) {
                   setIsShowingWin(isShowingWin = false)
                   
                   chooseimage()
+                  console.log(qnComplete)
                   setQnComplete(qnComplete = false)
                   console.log(qnComplete)
                 }, 2500)
