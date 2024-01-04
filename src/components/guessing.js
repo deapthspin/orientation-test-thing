@@ -206,7 +206,7 @@ function Guessing(props) {
                   setIsShowingWin(isShowingWin = false)
                   
                   chooseimage()
-                  setPlayerans([])
+                  setPlayerans(playerans = [])
                   setQnComplete(qnComplete = false)
                 }, 2500)
               }
