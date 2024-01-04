@@ -29,6 +29,7 @@ function Guessing(props) {
   // const [question, setQuestion] = useState('')
   let [playerVotes, setPlayerVotes] = useState([])
   let [cardschosen, setCardschosen] = useState([{}, {}])
+  const [canVote, setCanVote] = useState(true)
   const navigate = useNavigate()
   const ws = useRef()
 
@@ -208,6 +209,7 @@ function Guessing(props) {
                   chooseimage()
                   setPlayerans(playerans = [])
                   setQnComplete(qnComplete = false)
+                  setCanVote(true)
                 }, 2500)
               }
               
@@ -426,19 +428,21 @@ function Guessing(props) {
   function vote(e) {
 
 
-    // if(!qnComplete) {
+    if(canVote) {
       ws.current.send(JSON.stringify({
         msgType: 'qndone',
         roomId: roomId,
         numComplete: numComplete,
       }))
       setQnComplete(qnComplete = true)
-    // }
+      setCanVote(false)
+
     ws.current.send(JSON.stringify({
       roomId: roomId,
       msgType: 'vote',
       voted: playerans[e.target.id]
     }))  
+  }
     
 
 
@@ -505,11 +509,12 @@ function Guessing(props) {
             <div>
               <h1>{plr.name}: {plr.ans.join('')}</h1>
               {isVoting && isowner !== 'yes' && plr.name === votedPlayer.name && <h2>voted</h2>}
-              {isVoting && isowner !== 'yes' && <button onClick={vote} id={index}>vote</button>}
+              {isVoting && canVote && isowner !== 'yes' && <button onClick={vote} id={index}>vote</button>}
               {isVoting && isowner === 'yes' && <button onClick={(e) => kick(e, plr.name)} id={index}>kick</button>}
             </div>
           ))}
         </div>}
+        {!canVote && <h1>you have voted</h1>}
         {isVoting && <h1>voting time</h1>}
         {isShowingWin && <div>
           <h1>highest votes: {highestVotes.name}</h1>
@@ -586,6 +591,7 @@ function Guessing(props) {
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
           {/* {console.log(plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'])} */}
+
           <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'].name}</h1>
           <ol>
             {plrScores.map((plr) => (
