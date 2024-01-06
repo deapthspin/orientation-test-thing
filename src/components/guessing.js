@@ -496,7 +496,7 @@ function Guessing(props) {
         <h1>picking animals</h1>
       </div>} */}
       {/* <h2 className='score'>score: {score}</h2> */}
-      {!qnComplete && !finished && !isVoting && isowner === 'yes' && <h2 className=''>time left: {secondsLeft}</h2>}
+      {/* {!qnComplete && !finished && !isVoting && isowner === 'yes' && <h2 className=''>time left: {secondsLeft}</h2>} */}
       {!finished && <div>
         {/* <h1>{isowner}</h1> */}
         {isowner === 'yes' && <div>
