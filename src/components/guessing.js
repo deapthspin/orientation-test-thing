@@ -67,54 +67,54 @@ function Guessing(props) {
     
   // }, [beta, gamma])
 
-  useEffect(() => {
-    console.log(qnComplete)
-    if(!qnComplete && isowner === 'yes') {
-        console.log('yay')
-        setSecondsLeft(secondsLeft = 20)
-        setIntervalid(0)
-        let temp = setInterval(() => {
+  // useEffect(() => {
+  //   console.log(qnComplete)
+  //   if(!qnComplete && isowner === 'yes') {
+  //       console.log('yay')
+  //       setSecondsLeft(secondsLeft = 20)
+  //       setIntervalid(0)
+  //       let temp = setInterval(() => {
 
-          // setSecondsLeft(secondsLeft = 20)
-          setIntervalid(intervalid = temp)
+  //         // setSecondsLeft(secondsLeft = 20)
+  //         setIntervalid(intervalid = temp)
 
           
 
-          if(secondsLeft > 0) {
+  //         if(secondsLeft > 0) {
             
-            let temp = secondsLeft
-            temp -= 1
+  //           let temp = secondsLeft
+  //           temp -= 1
             
-            setSecondsLeft(secondsLeft = temp)
+  //           setSecondsLeft(secondsLeft = temp)
             
-          } else {
+  //         } else {
 
             
-            setNumComplete(numComplete = playernum)
+  //           setNumComplete(numComplete = playernum)
             
-            ws.current.send(JSON.stringify({
-              msgType: 'timeout',
-              roomId: roomId,
-            }))
-            let temp = questionsCompleted + 1
-            setQuestionsCompleted(temp)
+  //           ws.current.send(JSON.stringify({
+  //             msgType: 'timeout',
+  //             roomId: roomId,
+  //           }))
+  //           let temp = questionsCompleted + 1
+  //           setQuestionsCompleted(temp)
             
-            ws.current.send(JSON.stringify({
-              msgType: 'qndone',
-              roomId: roomId,
-              numComplete: numComplete,
-            }))
-          setSecondsLeft(secondsLeft = 20)
+  //           ws.current.send(JSON.stringify({
+  //             msgType: 'qndone',
+  //             roomId: roomId,
+  //             numComplete: numComplete,
+  //           }))
+  //         setSecondsLeft(secondsLeft = 20)
 
-          }
+  //         }
           
-        }, 1000)
+  //       }, 1000)
 
 
 
       
-    }
-  }, [qnComplete])
+  //   }
+  // }, [qnComplete])
 
 
   useEffect(() => {
