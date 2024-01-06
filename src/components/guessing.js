@@ -271,9 +271,11 @@ function Guessing(props) {
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
 
         } else if(data.msgType === 'qncorrect') {
-          
+          console.log('abc')
           if(data.username === username) {
             // setQnComplete(qnComplete = true)
+            console.log('abcd')
+
             setScore(score += 1)
             // cangetscore = false
             
@@ -591,7 +593,7 @@ function Guessing(props) {
         </div>}
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
-          {/* {console.log(plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'])} */}
+          {console.log(plrScores)}
 
           <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max(plrScores.map((item) => item.score)))['0'].name}</h1>
           <ol>
