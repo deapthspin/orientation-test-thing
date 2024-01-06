@@ -372,7 +372,7 @@ function Guessing(props) {
   }
 
   function sendAns() {
-    if(ans.length >= 2) {
+    if(ans.length >= 2 && ans[0] && ans[1]) {
       let temp = [...cards]
       let temp2 = [...ans].map((item) => item.trim())
       for(let i = 0; i < temp2.length; i++) {
