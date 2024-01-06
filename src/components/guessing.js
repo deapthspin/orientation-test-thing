@@ -279,8 +279,9 @@ function Guessing(props) {
             
           }
           for(let i = 0; i < plrScores.length; i++) {
-
+            console.log(plrScores[i].name, data.username)
             if(plrScores[i].name === data.username) {
+              console.log('add 1 score')
               plrScores[i].score += 1
             }
             
