@@ -191,6 +191,9 @@ function Guessing(props) {
                 for(let i = 0; i < plrScores.length; i++) {
                   console.log('guy named ', plrScores[i],)
                   if(plrScores[i] === highest) {
+                    if(plrScores[i].score) {
+                      plrScores[i].score -= 1
+                    }
                     console.log('add to ', plrScores[i])
                     plrScores[i].score += 1
                     console.log(plrScores[i].score)
