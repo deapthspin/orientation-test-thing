@@ -179,17 +179,17 @@ function Guessing(props) {
                 setIsVoting(isVoting = false)
                 let num = 0
                 let highest = {}
-                for(let i = 0;i < plrScores.length; i++) {
-                  if(plrScores[i].score >= num) {
-                    num = plrScores[i].score
-                    highest = plrScores[i]
-                    setHighestVotes(highestVotes = plrScores[i])
+                for(let i = 0;i < playerVotes.length; i++) {
+                  if(playerVotes[i].score >= num) {
+                    num = playerVotes[i].score
+                    highest = playerVotes[i]
+                    setHighestVotes(highestVotes = playerVotes[i])
                     
                   }
                 }
                 
                 for(let i = 0; i < plrScores.length; i++) {
-                  console.log('guy named ', plrScores[i])
+                  console.log('guy named ', plrScores[i],)
                   if(plrScores[i] === highest) {
                     console.log('add to ', plrScores[i])
                     plrScores[i].score += 1
