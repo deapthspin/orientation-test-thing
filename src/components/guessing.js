@@ -179,7 +179,6 @@ function Guessing(props) {
                 setIsVoting(isVoting = false)
                 let num = 0
                 let highest = {}
-                console.log(playerVotes, playerlist, plrScores)
                 playerVotes.map((item) => {
                   if(item.score >= num) {
                     num = item.score
@@ -189,7 +188,6 @@ function Guessing(props) {
                   }
                 })
                 
-                // console.log(highestVotes)
                 plrScores.map((plr) => {
                   if(plr === highest) {
                     plr.score += 1
@@ -217,7 +215,6 @@ function Guessing(props) {
             } else if(questionsCompleted >= 3) {
               clearInterval(intervalid)
               setFinished(true)
-              console.log('finished', finished)
               if(isowner === 'no') {
                 
                 ws.current.send(JSON.stringify({
@@ -271,15 +268,14 @@ function Guessing(props) {
           // setPlrScores(plrScores = [...plrScores, {name: data.name, score: data.score}])
 
         } else if(data.msgType === 'qncorrect') {
-          console.log('abc')
           if(data.username === username) {
             // setQnComplete(qnComplete = true)
-            console.log('abcd')
 
             setScore(score += 1)
             // cangetscore = false
             
           }
+          console.log(plrScores, 'aaaaaaaaaaaaaa')
           for(let i = 0; i < plrScores.length; i++) {
             console.log(plrScores[i].name, data.username)
             if(plrScores[i].name === data.username) {
@@ -294,7 +290,6 @@ function Guessing(props) {
           let temp = [...playerans]
           temp.push({name: data.username, ans: data.ans})
           setPlayerans(playerans = temp)
-          console.log(playerans)
         } else if(data.msgType === 'vote') {
           let tempvotes = [...playerVotes]
           tempvotes.map((item) => {
@@ -321,7 +316,7 @@ function Guessing(props) {
           }
           
          } else if(data.msgType === 'kick') {
-          console.log(data, 'kick msg')
+
           if(data.username === username) {
             navigate('/home')
             window.alert('you got disconnected')
@@ -355,7 +350,6 @@ function Guessing(props) {
   function addText(e, colour) {
     let temp = [...ans]
     if(!temp.includes(`${e.target.innerText} `)) {
-      // console.log(temp, e.target.innerText)
       let temp2 = [...cardschosen]
       
       
@@ -521,7 +515,6 @@ function Guessing(props) {
         {isVoting && <h1>voting time</h1>}
         {isShowingWin && <div>
           <h1>highest votes: {highestVotes.name}</h1>
-          {console.log(playerans, highestVotes, playerans.filter((plr) => plr.name === highestVotes.name.trim()))}
           <h2>{playerans.filter((plr) => plr.name === highestVotes.name.trim())['0'].ans.join('')}</h2>
         </div>}
         {isowner !== 'yes' && !qnComplete && <h1>{ans.join('')}</h1>}
@@ -538,7 +531,6 @@ function Guessing(props) {
         <br/>
         <br/>
         {isowner !== 'yes' && cardschosen.length && !isVoting && !isShowingWin && <div className='guessing-cards'>
-            {console.log(cardschosen)}
             {cardschosen.map((card) => (
               <div className={`card-${card.colour}`}>
                   <h1>{card.text}</h1>
@@ -593,7 +585,6 @@ function Guessing(props) {
         </div>}
 
         {finished && isowner === 'yes' && plrScores.length > 0 && <div>
-          {console.log(plrScores.map((plr) => console.log(plr.score)), Math.max.apply(Math, plrScores.map((plr) => plr.score * 1)), plrScores.map((plr) => plr.score * 1))}
 
           <h1>the winner is: {plrScores.filter((plr) => plr.score === Math.max.apply(Math, plrScores.map((item) => item.score)))['0'].name}</h1>
           <ol>
