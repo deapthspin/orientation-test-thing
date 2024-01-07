@@ -193,6 +193,7 @@ function Guessing(props) {
                   if(plrScores[i] === highest) {
                     console.log('add to ', plrScores[i])
                     plrScores[i].score += 1
+                    console.log(plrScores[i].score)
                   }
                 }
                 ws.current.send(JSON.stringify({
