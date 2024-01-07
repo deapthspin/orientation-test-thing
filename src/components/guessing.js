@@ -179,20 +179,20 @@ function Guessing(props) {
                 setIsVoting(isVoting = false)
                 let num = 0
                 let highest = {}
-                playerVotes.map((item) => {
-                  if(item.score >= num) {
-                    num = item.score
-                    highest = item
-                    setHighestVotes(highestVotes = item)
+                for(let i = 0;i < plrScores.length; i++) {
+                  if(plrScores[i].score >= num) {
+                    num = plrScores[i].score
+                    highest = plrScores[i]
+                    setHighestVotes(highestVotes = plrScores[i])
                     
                   }
-                })
+                }
                 
-                plrScores.map((plr) => {
-                  if(plr === highest) {
-                    plr.score += 1
+                for(let i = 0; i < plrScores.length; i++) {
+                  if(plrScores[i] === highest) {
+                    plrScores[i].score += 1
                   }
-                })
+                }
                 ws.current.send(JSON.stringify({
                   roomId: roomId,
                   msgType: 'upscore',
