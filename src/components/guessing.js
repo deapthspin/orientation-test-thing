@@ -318,6 +318,7 @@ function Guessing(props) {
             }))
             if(username === data.name) {
               setScore(score += 1)
+              setScore(score -= 1)
             }
           }
           
