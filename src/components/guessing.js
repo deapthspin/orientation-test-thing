@@ -277,7 +277,7 @@ function Guessing(props) {
           if(data.username === username) {
             // setQnComplete(qnComplete = true)
 
-            setScore(score += 1)
+            // setScore(score += 1)
             // cangetscore = false
             
           }
