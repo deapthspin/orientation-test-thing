@@ -314,11 +314,12 @@ function Guessing(props) {
             ws.current.send(JSON.stringify({
               msgType: 'consolelog',
               roomId: roomId,
-              msg: [username, data.name, data]
+              msg: [score]
             }))
             if(username === data.name) {
+
               setScore(score += 1)
-              setScore(score -= 1)
+              
             }
           }
           
