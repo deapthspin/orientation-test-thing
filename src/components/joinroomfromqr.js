@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 function Joinroomfromqr(props) {
     const roomId = useParams().id
     const [name, setName] = useState('')
+    const [canJoin, setCanJoin] = useState(true)
     const navigate = useNavigate()
     const ws = useRef()
     const {setIsOwner, isOwner, setUsername} = props
@@ -26,7 +27,7 @@ function Joinroomfromqr(props) {
     
             // console.log(data1.players)
             if(!data1.players.includes(name)) {
-            
+                    setCanJoin(false)
                     console.log('sent')
                     const res = await fetch(`https://animalguessingpg.onrender.com/rooms/${roomId}`)
                     const data = await res.json()
@@ -64,7 +65,7 @@ function Joinroomfromqr(props) {
     return (
         <div>
             <input onChange={nameChange}/>
-            <button onClick={joinGame}>join</button>
+            {canJoin && <button onClick={joinGame}>join</button>}
         </div>
     )
 }
